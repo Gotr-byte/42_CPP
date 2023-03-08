@@ -87,8 +87,9 @@ Fixed   Fixed::operator * (const Fixed &rightVal){
     return(multi);
 }
 
+//Can trade range for precision here when changing the bitshift from the divided to the divisor
 Fixed   Fixed::operator / (const Fixed &rightVal){
     Fixed sum;
-    sum.setRawBits((this->fixedNumVal << 8) / (rightVal.getRawBits()));
+    sum.setRawBits((this->fixedNumVal << this->bitsNum) / (rightVal.getRawBits()));
     return(sum);
 }
