@@ -69,6 +69,11 @@ bool    Fixed::operator == (const Fixed  &rightVal)
     return (this->fixedNumVal == rightVal.getRawBits() ? true : false);
 }
 
+bool Fixed::operator!=(Fixed const &ref)
+{
+    return (this->getRawBits() != ref.getRawBits());
+}
+
 Fixed   Fixed::operator + (const Fixed &rightVal){
     Fixed sum;
     sum.setRawBits(this->fixedNumVal + rightVal.getRawBits());
@@ -92,4 +97,44 @@ Fixed   Fixed::operator / (const Fixed &rightVal){
     Fixed sum;
     sum.setRawBits((this->fixedNumVal << this->bitsNum) / (rightVal.getRawBits()));
     return(sum);
+}
+
+Fixed &Fixed::operator++(){
+    ++this->fixedNumVal;
+    return(*this);
+}
+
+Fixed &Fixed::operator--(){
+    --this->fixedNumVal;
+    return(*this);
+}
+
+Fixed   Fixed::operator++(int)
+{
+    Fixed cpy = *this;
+    this->fixedNumVal++;
+    return cpy;
+}
+
+Fixed   Fixed::operator--(int)
+{
+    Fixed cpy = *this;
+    this->fixedNumVal--;
+    return cpy;
+}
+
+Fixed &Fixed::min(Fixed &firstVal, Fixed &secondVal){
+    return(firstVal > secondVal ? secondVal : firstVal);
+}
+
+Fixed &Fixed::max(Fixed &firstVal, Fixed &secondVal){
+    return(firstVal > secondVal ? firstVal : secondVal);
+}
+
+Fixed const &Fixed::min(const Fixed &firstVal, const Fixed &secondVal) {
+    return(firstVal.toFloat() > secondVal.toFloat() ? secondVal : firstVal);
+}
+
+Fixed const &Fixed::max(const Fixed &firstVal, const Fixed &secondVal){
+    return(firstVal.toFloat() > secondVal.toFloat() ? firstVal : secondVal);
 }
