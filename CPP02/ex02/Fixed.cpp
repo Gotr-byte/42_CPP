@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed():fixedNumVal(0){std::cout << "Default constructor called" << std::endl;}
 
@@ -6,7 +7,8 @@ Fixed::Fixed(const int inVal): fixedNumVal(inVal * (1 << bitsNum)){
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float inValFloat): fixedNumVal((inValFloat * (1 << bitsNum)) + (inValFloat >= 0 ? 0.5 : -0.5)){
+//Fixed::Fixed(const float inValFloat): fixedNumVal((inValFloat * (1 << bitsNum)) + (inValFloat >= 0 ? 0.5 : -0.5))
+Fixed::Fixed(const float inValFloat): fixedNumVal(roundf(inValFloat * (1 << bitsNum))){
     std::cout << "Float constructor called" << std::endl;
 }
 Fixed::Fixed(const Fixed &oldObj){
@@ -87,9 +89,7 @@ Fixed   Fixed::operator - (const Fixed &rightVal){
 }
 
 Fixed   Fixed::operator * (const Fixed &rightVal){
-    Fixed multi;
-    multi.setRawBits((this->fixedNumVal >> (this->bitsNum / 2)) * (rightVal.getRawBits() >> (this->bitsNum / 2)));
-    return(multi);
+    return( this->toFloat() * rightVal.toFloat());
 }
 
 //Can trade range for precision here when changing the bitshift from the divided to the divisor

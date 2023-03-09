@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <ostream>
+
 class Fixed{
 public:
     Fixed();
