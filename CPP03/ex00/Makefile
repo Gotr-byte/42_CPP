@@ -1,5 +1,5 @@
-NAME := Fixed
-SRCFILES := main.cpp Fixed.cpp
+NAME := claptrap
+SRCFILES := main.cpp ClapTrap.cpp
 
 CC = c++
 CFLAGS = -std=c++98 -Wextra -Werror -Wall

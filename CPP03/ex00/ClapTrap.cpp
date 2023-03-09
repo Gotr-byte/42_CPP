@@ -1,24 +1,41 @@
 #include "ClapTrap.hpp"
 
-ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _attack_dmg(0){
+ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _attack_dmg(0){
     std::cout << "Claptrap is constructed" << std::endl;
 }
-ClapTrap(const ClapTrap &oldObj){
+ClapTrap::ClapTrap(const ClapTrap &oldObj){
     std::cout << "Copy Claptrap has been constructed" << std::endl;
 }
-~ClapTrap(){
+ClapTrap::~ClapTrap(){
     std::cout << "Claptrap destructor called" << std::endl;
 }
-ClapTrap & operator = (const ClapTrap &assign){
-    //todo assign values from right to left
-     return(*this);
+ClapTrap & ClapTrap::operator = (const ClapTrap &other){
+
+    if (this != &other) {
+        // Copy the data members from 'other' to 'this'
+        this->_name = other._name;
+        this->_hp = other._hp;
+        this->_ep = other._ep;
+        this->_attack_dmg = other._attack_dmg;
+    }
+    return *this;
 }
+//need getters here
+std::string ClapTrap::getName() {return(this->_name);}
+int ClapTrap::getAttackDmg() {return(this->_attack_dmg);}
+int ClapTrap::getEp() {return(this->_ep);}
+int ClapTrap::getHp() {return(this->_hp);}
 
 void    ClapTrap::attack(const std::string& target){
-    if (_ep == 0)
-        return;
-    _ep = _ep - 1;
-    std::cout << "Claptrap" << _name << "attacks" target << "causing" << _attack_dmg << "points of damage!" << std::endl;
+    if (_ep <= 0)
+    {
+        std::cout << "Claptrap " << _name << " has no energy left and cannot attack" << std::endl;
+    }
+    else
+    {
+        _ep = _ep - 1;
+        std::cout << "Claptrap " << _name << " attacks " << target << " causing " << _attack_dmg << " points of damage!" << std::endl;
+    }
 }
 void    ClapTrap::takeDamage(unsigned int amount){
 
@@ -31,9 +48,14 @@ void    ClapTrap::takeDamage(unsigned int amount){
     std::cout << "Claptrap takes " << amount << " damage!" << std::endl;
 }
 void    ClapTrap::beRapaired(unsigned int amount){
-    _hp = _hp + amount;
-    _ep = _ep - 1;
     if (_ep <= 0)
-        std::cout << "Claptrap " << _name << "has no energy left and cannot conduct repairs" << std::endl;
-    std::cout << "Claptrap "<< name << " is fixed for "<< amount << " hit points" << std::endl;
+    {
+        std::cout << "Claptrap " << _name << " has no energy left and cannot conduct repairs" << std::endl;
+    }
+    else{
+        _hp = _hp + amount;
+        _ep = _ep - 1;
+        std::cout<< "Claptrap "<< _name << " is fixed for "<< amount << " hit points" << std::endl;
+    }
+
 }
