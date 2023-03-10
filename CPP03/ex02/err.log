@@ -1,0 +1,15 @@
+ScavTrap.cpp: In copy constructor ‘ScavTrap::ScavTrap(const ScavTrap&)’:
+ScavTrap.cpp:14:42: error: no matching function for call to ‘ClapTrap::ClapTrap()’
+   14 | ScavTrap::ScavTrap(const ScavTrap &oldObj){
+      |                                          ^
+In file included from ScavTrap.hpp:2,
+                 from ScavTrap.cpp:1:
+ClapTrap.hpp:8:5: note: candidate: ‘ClapTrap::ClapTrap(const ClapTrap&)’
+    8 |     ClapTrap(const ClapTrap &oldObj);
+      |     ^~~~~~~~
+ClapTrap.hpp:8:5: note:   candidate expects 1 argument, 0 provided
+ClapTrap.hpp:7:5: note: candidate: ‘ClapTrap::ClapTrap(std::string)’
+    7 |     ClapTrap(std::string name);
+      |     ^~~~~~~~
+ClapTrap.hpp:7:5: note:   candidate expects 1 argument, 0 provided
+make: *** [<builtin>: ScavTrap.o] Error 1
