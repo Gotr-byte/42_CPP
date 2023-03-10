@@ -11,7 +11,6 @@ Fixed::Fixed(const Fixed &oldObj){
 Fixed::~Fixed(){std::cout << "Destructor called" << std::endl;}
 
 Fixed &Fixed::operator = (const Fixed &oldObj){
-//    this->fixedNumVal = oldObj.getRawBits();
     setRawBits(oldObj.getRawBits());
     std::cout << "Copy assignment operator called" << std::endl;
     return (*this);

@@ -1,5 +1,7 @@
 #include "ClapTrap.hpp"
 
+#define ENERGY_COST 1
+
 ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _attack_dmg(0){
     std::cout << "Claptrap is constructed" << std::endl;
 }
@@ -33,7 +35,7 @@ void    ClapTrap::attack(const std::string& target){
     }
     else
     {
-        _ep = _ep - 1;
+        _ep = _ep - ENERGY_COST;
         std::cout << "Claptrap " << _name << " attacks " << target << " causing " << _attack_dmg << " points of damage!" << std::endl;
     }
 }
@@ -54,7 +56,7 @@ void    ClapTrap::beRapaired(unsigned int amount){
     }
     else{
         _hp = _hp + amount;
-        _ep = _ep - 1;
+        _ep = _ep - ENERGY_COST;
         std::cout<< "Claptrap "<< _name << " is fixed for "<< amount << " hit points" << std::endl;
     }
 

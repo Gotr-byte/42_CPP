@@ -7,7 +7,6 @@ Fixed::Fixed(const int inVal): fixedNumVal(inVal * (1 << bitsNum)){
     std::cout << "Int constructor called" << std::endl;
 }
 
-//Fixed::Fixed(const float inValFloat): fixedNumVal((inValFloat * (1 << bitsNum)) + (inValFloat >= 0 ? 0.5 : -0.5))
 Fixed::Fixed(const float inValFloat): fixedNumVal(roundf(inValFloat * (1 << bitsNum))){
     std::cout << "Float constructor called" << std::endl;
 }

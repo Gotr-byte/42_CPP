@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed():fixedNumVal(0){std::cout << "Default constructor called" << std::endl;}
 
@@ -6,9 +7,10 @@ Fixed::Fixed(const int inVal): fixedNumVal(inVal * (1 << bitsNum)){
     std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(const float inValFloat): fixedNumVal((inValFloat * (1 << bitsNum)) + (inValFloat >= 0 ? 0.5 : -0.5)){
+Fixed::Fixed(const float inValFloat): fixedNumVal(roundf(inValFloat * (1 << bitsNum))){
     std::cout << "Float constructor called" << std::endl;
 }
+
 Fixed::Fixed(const Fixed &oldObj){
     setRawBits(oldObj.getRawBits());
     std::cout << "Copy constructor called" << std::endl;}
