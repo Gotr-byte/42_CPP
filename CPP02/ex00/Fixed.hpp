@@ -6,6 +6,7 @@ public:
     Fixed(const Fixed &oldObj);
     ~Fixed();
     Fixed & operator = (const Fixed &oldObj);
+
     int     getRawBits(void)const;
     void    setRawBits(int const raw);
 private:
