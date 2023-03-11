@@ -1,29 +1,28 @@
 #include "Animal.hpp"
 
 Animal::Animal():_type("Animal"){
-    std::cout << "Animal is constructed" << std::endl;
+    std::cout << _type <<" is constructed" << std::endl;
 }
 Animal::Animal(const Animal &other){
     if (this != &other) {
         this->_type = other._type;
     }
-    std::cout << "Copy Animal has been constructed" << std::endl;
+    std::cout << "Copy " << _type << " has been constructed" << std::endl;
 }
 Animal::~Animal(){
-    std::cout << "Animal destructor called" << std::endl;
+    std::cout << _type << " destructor called" << std::endl;
 }
 Animal & Animal::operator = (const Animal &other){
 
     if (this != &other) {
-        // Copy the data members from 'other' to 'this'
-        this->_name = other._name;
-        this->_hp = other._hp;
-        this->_ep = other._ep;
-        this->_attack_dmg = other._attack_dmg;
+        this->_type = other._type;
     }
     return *this;
 }
 
-Animal::makeSound(){
-    std::cout "Makes " << _type << " sounds" << std::endl;
+void Animal::makeSound(){
+    std::cout << "Makes generic " << _type << " sounds" << std::endl;
 }
+
+std::string Animal::getType(){return(_type);}
+

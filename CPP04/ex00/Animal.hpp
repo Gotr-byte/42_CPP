@@ -8,7 +8,11 @@ public:
     Animal(const Animal &other);
     ~Animal();
     Animal & operator = (const Animal &other);
-    makeSound();
+
+    void    makeSound();
+
+    //TODO figure out virtual here
+    virtual std::string getType();
 protected:
-    _type
+    std::string _type;
 };

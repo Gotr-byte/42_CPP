@@ -1,14 +1,18 @@
 #pragma once
+#include "Animal.hpp"
 #include <iostream>
 
 class Dog: public Animal
 {
 public:
-    Dog(std::string name);
-    Dog(const Dog &oldObj);
+    Dog();
+    Dog(const Dog &other);
     ~Dog();
     Dog & operator = (const Dog &other);
 
-    makeSound();
-private:
+    void makeSound();
+//    std::string getType();
+
+protected:
+    std::string _type;
 };
