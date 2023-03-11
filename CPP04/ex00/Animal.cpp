@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal(std::string name):_type(name){
+Animal::Animal():_type("Animal"){
     std::cout << "Animal is constructed" << std::endl;
 }
 Animal::Animal(const Animal &other){
@@ -22,4 +22,8 @@ Animal & Animal::operator = (const Animal &other){
         this->_attack_dmg = other._attack_dmg;
     }
     return *this;
+}
+
+Animal::makeSound(){
+    std::cout "Makes " << _type << " sounds" << std::endl;
 }

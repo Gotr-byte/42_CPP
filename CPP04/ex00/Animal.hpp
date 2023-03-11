@@ -4,7 +4,7 @@
 class Animal
 {
 public:
-    Animal(std::string name);
+    Animal();
     Animal(const Animal &other);
     ~Animal();
     Animal & operator = (const Animal &other);
