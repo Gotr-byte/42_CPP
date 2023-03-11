@@ -20,6 +20,7 @@ public:
     void        setHp(int hp);
     void        setEp(int ep);
     void        setAttackDmg(int attackDmg);
+    void        getData();
 
 protected:
     std::string _name;

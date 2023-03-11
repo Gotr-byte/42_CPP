@@ -35,6 +35,13 @@ int ClapTrap::getAttackDmg() {return(this->_attack_dmg);}
 int ClapTrap::getEp() {return(this->_ep);}
 int ClapTrap::getHp() {return(this->_hp);}
 
+void ClapTrap::getData(){
+    std::cout << "Name: " << this->getName() << std::endl;
+    std::cout << "Attack Damage: " << this->getAttackDmg() << std::endl;
+    std::cout << "Hp: " << this->getHp() << std::endl;
+    std::cout << "Energy points: " << this->getEp() << std::endl;
+}
+
 void    ClapTrap::attack(const std::string& target){
     if (_ep <= 0)
     {
