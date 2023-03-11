@@ -14,7 +14,6 @@ ScavTrap::ScavTrap(const ScavTrap & oldObj): ClapTrap(oldObj) {
 ScavTrap::~ScavTrap() {
     std::cout << "Scavtrap destructor has been called" << std::endl;
  }
-
 ScavTrap & ScavTrap::operator = (const ScavTrap &other){
 
     if (this != &other) {
@@ -25,6 +24,7 @@ ScavTrap & ScavTrap::operator = (const ScavTrap &other){
     }
     return *this;
 }
+
 
 void ScavTrap::attack(const std::string& target) {
     if (_ep <= 0) {

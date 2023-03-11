@@ -8,13 +8,21 @@ ScavTrap::ScavTrap(std::string name): ClapTrap(name){
     this->setAttackDmg(20);
     std::cout << "Scavtrap is constructed" << std::endl;
 }
-
-ScavTrap::~ScavTrap():~ClapTrap(){
+ScavTrap::ScavTrap(const ScavTrap & oldObj): ClapTrap(oldObj) {
+    std::cout << "Copy Claptrap has been constructed" << std::endl;
+}
+ScavTrap::~ScavTrap() {
     std::cout << "Scavtrap destructor has been called" << std::endl;
 }
+ScavTrap & ScavTrap::operator = (const ScavTrap &other){
 
-ScavTrap::ScavTrap(const ScavTrap & oldObj): ClapTrap(oldObj){
-    std::cout << "Copy Claptrap has been constructed" << std::endl;
+    if (this != &other) {
+        this->_name = other._name;
+        this->_hp = other._hp;
+        this->_ep = other._ep;
+        this->_attack_dmg = other._attack_dmg;
+    }
+    return *this;
 }
 
 void ScavTrap::attack(const std::string& target) {

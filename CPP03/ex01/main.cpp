@@ -8,6 +8,8 @@ int main(){
     lushonda.takeDamage(10);
     lushonda.getData();
     alice.getData();
+    alice = lushonda;
+    alice.getData();
 
 
 

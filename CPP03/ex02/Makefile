@@ -1,4 +1,4 @@
-NAME := fragtrap
+NAME := scavtrap
 SRCFILES := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 CC = c++
