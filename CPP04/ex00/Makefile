@@ -1,5 +1,5 @@
 NAME := animals
-SRCFILES := Animal.cpp Cat.cpp Dog.cpp main.cpp
+SRCFILES := WrongAnimal.cpp WrongCat.cpp Animal.cpp Cat.cpp Dog.cpp main.cpp
 
 CC = c++
 CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wfatal-errors

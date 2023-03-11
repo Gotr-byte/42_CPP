@@ -9,10 +9,10 @@ public:
     ~Animal();
     Animal & operator = (const Animal &other);
 
-    void    makeSound();
+    virtual void    makeSound()const;
 
     //TODO figure out virtual here
-    virtual std::string getType();
+    std::string getType()const;
 protected:
     std::string _type;
 };

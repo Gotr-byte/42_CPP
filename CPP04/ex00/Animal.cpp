@@ -20,9 +20,9 @@ Animal & Animal::operator = (const Animal &other){
     return *this;
 }
 
-void Animal::makeSound(){
+void Animal::makeSound()const{
     std::cout << "Makes generic " << _type << " sounds" << std::endl;
 }
 
-std::string Animal::getType(){return(_type);}
+std::string Animal::getType()const{return(_type);}
 

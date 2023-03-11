@@ -10,8 +10,8 @@ public:
     ~Cat();
     Cat & operator = (const Cat &other);
 
-    void makeSound();
-//    std::string getType();
+    void makeSound()const;
+    std::string getType();
 
 protected:
     std::string _type;

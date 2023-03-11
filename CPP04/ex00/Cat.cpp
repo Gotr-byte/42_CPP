@@ -21,8 +21,8 @@ Cat & Cat::operator = (const Cat &other){
     return *this;
 }
 
-void Cat::makeSound(){
+void Cat::makeSound()const{
     std::cout << "Makes generic " << _type << " sounds" << std::endl;
 }
 
-//std::string Cat::getType(){return(this->_type);}
+std::string Cat::getType(){return(this->_type);}
