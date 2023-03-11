@@ -5,7 +5,14 @@
 ClapTrap::ClapTrap(std::string name):_name(name), _hp(10), _ep(10), _attack_dmg(0){
     std::cout << "Claptrap is constructed" << std::endl;
 }
-ClapTrap::ClapTrap(const ClapTrap &oldObj){
+ClapTrap::ClapTrap(const ClapTrap &other){
+    if (this != &other) {
+        // Copy the data members from 'other' to 'this'
+        this->_name = other._name;
+        this->_hp = other._hp;
+        this->_ep = other._ep;
+        this->_attack_dmg = other._attack_dmg;
+    }
     std::cout << "Copy Claptrap has been constructed" << std::endl;
 }
 ClapTrap::~ClapTrap(){
@@ -22,7 +29,7 @@ ClapTrap & ClapTrap::operator = (const ClapTrap &other){
     }
     return *this;
 }
-//need getters here
+
 std::string ClapTrap::getName() {return(this->_name);}
 int ClapTrap::getAttackDmg() {return(this->_attack_dmg);}
 int ClapTrap::getEp() {return(this->_ep);}
