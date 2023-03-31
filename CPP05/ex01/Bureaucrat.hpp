@@ -1,8 +1,7 @@
+#pragma once
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
-
-class Bureaucrat;
 
 class Bureaucrat
 {
@@ -13,7 +12,6 @@ class Bureaucrat
 		Bureaucrat & operator = (const Bureaucrat &other);
 		Bureaucrat(const std::string name);
 		
-		// void				signForm();
 		const std::string	getName()const;
 		int					getGrade()const;
 		void				setGrade(int grade);
@@ -37,8 +35,8 @@ class Bureaucrat
 		};
 	
 	private:
-		int					_grade;
+		int		_grade;
 		const	std::string _name;
 };
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat const &Bureaucrat);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const &bureaucrat);

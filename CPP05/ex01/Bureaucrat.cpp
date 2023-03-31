@@ -10,7 +10,7 @@ Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(-1)
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other.getName());
+	new (this) Bureaucrat(other._name);
 	this->_grade = other._grade;
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
@@ -19,7 +19,7 @@ Bureaucrat::~Bureaucrat(){
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other.getName());
+	new (this) Bureaucrat(other._name);
 	this->_grade = other._grade;
 	return (*this);
 }
@@ -43,7 +43,7 @@ void Bureaucrat::setGrade(int grade)
 	else
 	{
 		this->_grade = grade;
-		std::cout << "succesfully set grade to " << grade << std::endl;
+		std::cout << "succesfully set " << this->_name << " grade to " << grade << std::endl;
 	}
 }
 

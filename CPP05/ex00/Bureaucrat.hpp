@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
@@ -40,4 +41,4 @@ class Bureaucrat
 		const	std::string _name;
 };
 
-std::ostream & operator<<(std::ostream & o, Bureaucrat const &Bureaucrat);
+std::ostream & operator<<(std::ostream & o, Bureaucrat const &bureaucrat);

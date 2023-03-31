@@ -1,98 +1,43 @@
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 
 int main()
 {
-	std::cout << "Grade to high expected" << std::endl;
-	Bureaucrat j("John Doe");
-	try
-	{	
-		j.setGrade(1);
-		std::cout << j;
-		j.setGrade(3);
-		std::cout << j;
-		j.setGrade(-1);
-		std::cout << j;
-		j.setGrade(151);
-		std::cout << j;
-	}
-	catch(const Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << e.what();
-	}
-	std::cout << "Grade to high test ended" << std::endl;
+	Form test;
+	Form test_too("test_too", 50, 100);
+	Bureaucrat a("Jenkins");
+	std::cout << "Bureaucrat signes document because his grade is high enough..." << '\n';
+	a.setGrade(10);
+	std::cout << test;
+	std::cout << a;
+	test.beSigned(a);
+	std::cout << test_too;
+	std::cout << a;
+	test_too.beSigned(a);
 	std::cout << std::endl;
-	std::cout << "Grade to low expected" << std::endl;
-	Bureaucrat k("Cesare");
-	try
-	{	
-		k.setGrade(1);
-		std::cout << k;
-		k.setGrade(3);
-		std::cout << k;
-		k.setGrade(151);
-		std::cout << k;
-	}
-	catch(const Bureaucrat::GradeTooLowException& e)
-	{
-		std::cerr << e.what();
-	}
-	std::cout << "Grade to low test ended" << std::endl;
+	std::cout << "Buereaucrat does not sign document because he is of too low grade..." << '\n';
+	a.setGrade(60);
+	test.beSigned(a);
+	test_too.beSigned(a);
 	std::cout << std::endl;
-	std::cout << "Grade to high test" << std::endl;
-	Bureaucrat i;
+	std::cout << "Verifying if the exceptions work in this case" << '\n';
 	try
-	{	
-		i.setGrade(1);
-		std::cout << i;
-		i.setGrade(3);
-		std::cout << i;
-		i.setGrade(-1);
-		std::cout << i;
-		i.setGrade(151);
-		std::cout << i;
-	}
-	
-	catch(const std::exception & e)
 	{
-		std::cerr << e.what();
-	}
-	std::cout << "Grade to high test ended" << std::endl;
-	std::cout << std::endl;
-	std::cout << "Incrementation / decrementation test, expected grade too low\n";
-	Bureaucrat m("Momo");
-	try
-	{	
-		m.setGrade(149);
-		m.incrementGrade();
-		std::cout << m;
-		m.decrementGrade();
-		std::cout << m;
-		m.decrementGrade();
-		std::cout << m;
-		m.decrementGrade();
-		std::cout << m;
-		m.decrementGrade();
-		std::cout << m;
-		m.decrementGrade();
-		std::cout << m;
-		m.incrementGrade();
-		std::cout << m;
-		m.incrementGrade();
-		std::cout << m;
-		m.incrementGrade();
-		std::cout << m;
-		m.setGrade(300);
-		std::cout << m;
-		m.setGrade(-1);
-		std::cout << m;
-		m.setGrade(151);
-		std::cout << m;
+		Form test_three("test_three", -1, 15);
 	}
 	catch(const std::exception & e)
 	{
 		std::cerr << e.what();
 	}
-	std::cout << "Decremented to a grade which is too low\n";
+	std::cout << std::endl;
+	std::cout << "Verifying if the exceptions work in this case" << '\n';
+	try
+	{
+		Form test_four("test_four", 151, 15);
+	}
+	catch(const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
 	std::cout << std::endl;
 }

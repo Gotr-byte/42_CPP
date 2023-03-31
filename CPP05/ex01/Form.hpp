@@ -1,4 +1,7 @@
-#include <iostream>
+#pragma once
+#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -25,12 +28,15 @@ class Form
 					return("Grade to low\n");
 				}
 		};
-		const 		std::string getName();
-		void		beSigned();
-		const std::string getName() const;
+		void		beSigned(Bureaucrat &bureaucrat);
+		const		std::string getName() const;
+		const		int getSignGrade()const;
+		const		int getExecuteGrade()const;
 	private:
 		const std::string	_name;
 		bool				_signed;
 		const int			_signed_grade;
 		const int			_execute_grade;
 };
+
+std::ostream & operator<<(std::ostream & o, Form const &form);

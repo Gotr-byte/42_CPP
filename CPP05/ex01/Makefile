@@ -1,8 +1,8 @@
-NAME := bureaucrat
-SRCFILES := Bureaucrat.cpp main.cpp
+NAME := form
+SRCFILES := Bureaucrat.cpp Form.cpp main.cpp
 
 CC = c++
-CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wfatal-errors
+CFLAGS = -std=c++98 -Wextra -Werror -Wall
 OBJS = $(SRCFILES:.cpp=.o)
 
 all: $(NAME)
