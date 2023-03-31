@@ -1,5 +1,8 @@
 #include <iostream>
 #include <ostream>
+#include <stdexcept>
+
+class Bureaucrat;
 
 class Bureaucrat
 {
@@ -8,9 +11,15 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat();
 		Bureaucrat & operator = (const Bureaucrat &other);
-		std::string getName()const;
-		int getGrade()const;
-		class GradeTooHighException : public std::exception
+		Bureaucrat(const std::string name);
+		
+		// void				signForm();
+		const std::string	getName()const;
+		int					getGrade()const;
+		void				setGrade(int grade);
+		void				incrementGrade();
+		void				decrementGrade();
+		class				GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
@@ -18,7 +27,7 @@ class Bureaucrat
 					return("Grade to high\n");
 				}
 		};
-		class GradeTooLowException : public std::exception
+		class				GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
@@ -26,13 +35,10 @@ class Bureaucrat
 					return("Grade to low\n");
 				}
 		};
-		void setGrade(int grade);
-		void setName(std::string name);
-		void incrementGrade();
-		void decrementGrade();
+	
 	private:
-		unsigned char _grade;
-		std::string _name;
+		int					_grade;
+		const	std::string _name;
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const &Bureaucrat);

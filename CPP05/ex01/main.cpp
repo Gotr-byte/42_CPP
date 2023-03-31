@@ -4,8 +4,7 @@
 int main()
 {
 	std::cout << "Grade to high expected" << std::endl;
-	Bureaucrat j;
-	j.setName("John Doe");
+	Bureaucrat j("John Doe");
 	try
 	{	
 		j.setGrade(1);
@@ -24,8 +23,7 @@ int main()
 	std::cout << "Grade to high test ended" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Grade to low expected" << std::endl;
-	Bureaucrat k;
-	k.setName("Cesare");
+	Bureaucrat k("Cesare");
 	try
 	{	
 		k.setGrade(1);
@@ -62,8 +60,7 @@ int main()
 	std::cout << "Grade to high test ended" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Incrementation / decrementation test, expected grade too low\n";
-	Bureaucrat m;
-	m.setName("Momo");
+	Bureaucrat m("Momo");
 	try
 	{	
 		m.setGrade(149);

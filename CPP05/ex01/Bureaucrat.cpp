@@ -1,30 +1,30 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(){
-    this->_grade = -1;
-	this->_name = "default";
+Bureaucrat::Bureaucrat(): _name("Dragos"), _grade(-1)
+{
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-Bureaucrat::Bureaucrat(const Bureaucrat &other){
-    if (this != &other) {
-        this->_grade = other._grade;
-		this->_name = other._name;
-    }
+Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(-1)
+{
+	std::cout << "Constructor of bureaucrat called" << std::endl;
+}
+Bureaucrat::Bureaucrat(const Bureaucrat &other)
+{
+	new (this) Bureaucrat(other.getName());
+	this->_grade = other._grade;
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
 Bureaucrat::~Bureaucrat(){
     std::cout << "Bureaucrat destructor called" << std::endl;
 }
-Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other){
-
-    if (this != &other) {
-        this->_grade = other._grade;
-		this->_name = other._name;
-    }
-    return *this;
+Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
+{
+	new (this) Bureaucrat(other.getName());
+	this->_grade = other._grade;
+	return (*this);
 }
 
-std::string Bureaucrat::getName()const
+const std::string Bureaucrat::getName()const
 {
 	return(this->_name);
 }
@@ -45,11 +45,6 @@ void Bureaucrat::setGrade(int grade)
 		this->_grade = grade;
 		std::cout << "succesfully set grade to " << grade << std::endl;
 	}
-}
-
-void Bureaucrat::setName(std::string name)
-{
-	this->_name = name;
 }
 
 void Bureaucrat::incrementGrade()
