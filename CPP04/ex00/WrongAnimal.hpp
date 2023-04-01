@@ -9,7 +9,7 @@ public:
     ~WrongAnimal();
     WrongAnimal & operator = (const WrongAnimal &other);
 
-    void    makeSound()const;
+    virtual void    makeSound()const;
 
     //TODO figure out virtual here
     std::string getType()const;
