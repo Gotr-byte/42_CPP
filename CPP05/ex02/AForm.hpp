@@ -8,7 +8,7 @@ class AForm
 	public:
 		AForm();
 		AForm(const std::string name, const int signed_grade, const int execute_grade);
-		~AForm();
+		virtual ~AForm();
 		AForm(const AForm &other);
 		AForm & operator = (const AForm &other);
 
