@@ -46,12 +46,11 @@ void PresidentialPardonForm::beSigned(Bureaucrat &bureaucrat)
 	if (bureaucrat.getGrade() < this->_signed_grade)
 	{
 		this->_signed = true;
-		std::cout << bureaucrat.signForm(*this);
-		std::cout << this->getTarget() << "has been pardoned by Zaphon Beeblebrox" << std::endl;
+		bureaucrat.signForm(*this);
 	}
 	else
 	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade was too low." << std::endl;
+		bureaucrat.signForm(*this);
 		throw(GradeTooLowException());
 	}
 }
@@ -62,5 +61,22 @@ std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const &Presid
 	o << "Target: " << PresidentialPardonForm.getTarget() << "\n";
 	o << "Grade of bureucrat to sign: " << PresidentialPardonForm.getSignGrade() << "\n";
 	o << "Grade of bureucrat to execute: " << PresidentialPardonForm.getExecuteGrade() << "\n";
+	o << "Grade with signature(1 for signed): " << PresidentialPardonForm.checkSignature() << "\n";
 	return o;
+}
+
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
+{
+	if(this->checkSignature() && executor.getGrade() <= this->getExecuteGrade())
+	{
+		std::cout << this->getTarget() << " has been pardoned by Zaphon Beeblebrox" << std::endl;
+	}
+	else if(!this->checkSignature())
+	{
+		throw (FormNotSignedException());
+	}
+	else if(executor.getGrade() > this->getExecuteGrade())
+	{
+		throw(GradeTooLowException());
+	}
 }

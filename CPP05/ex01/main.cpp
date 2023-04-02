@@ -17,6 +17,7 @@ int main()
 		std::cout << test;
 		std::cout << a;
 		test.beSigned(a);
+		std::cout << test;
 		std::cout << test_too;
 		std::cout << a;
 		test_too.beSigned(a);

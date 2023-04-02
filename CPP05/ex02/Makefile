@@ -1,5 +1,5 @@
 NAME := three_form
-SRCFILES := AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp
+SRCFILES := ShrubberyCreationForm.cpp RobotomyRequestForm.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp
 
 CC = c++
 CFLAGS = -std=c++98 -Wextra -Werror -Wall

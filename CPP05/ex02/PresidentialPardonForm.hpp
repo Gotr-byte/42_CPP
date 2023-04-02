@@ -14,29 +14,13 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm();
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm & operator = (const PresidentialPardonForm &other);
-
-		// class		GradeTooHighException : public std::exception
-		// {
-		// 	public:
-		// 		virtual const char* what() const throw()
-		// 		{
-		// 			return("Grade to high\n");
-		// 		}
-		// };
-		// class		GradeTooLowException : public std::exception
-		// {
-		// 	public:
-		// 		virtual const char* what() const throw()
-		// 		{
-		// 			return("Grade to low\n");
-		// 		}
-		// };
 		std::string	getTarget()const;
 		void		beSigned(Bureaucrat &bureaucrat);
 		const		std::string getName() const;
 		const		int getSignGrade()const;
 		const		int getExecuteGrade()const;
 		const		bool checkSignature()const;
+		void		execute(Bureaucrat const & executor) const;
 	private:
 		const std::string	_name;
 		bool				_signed;
