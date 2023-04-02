@@ -29,9 +29,9 @@ class AForm
 				}
 		};
 		virtual void		beSigned(Bureaucrat &bureaucrat) = 0;
-		const		std::string getName() const;
-		const		int getSignGrade()const;
-		const		int getExecuteGrade()const;
+		virtual const		std::string getName() const;
+		virtual const		int getSignGrade()const;
+		virtual const		int getExecuteGrade()const;
 	private:
 		const std::string	_name;
 		bool				_signed;
