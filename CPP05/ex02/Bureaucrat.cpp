@@ -1,11 +1,6 @@
 #include "Bureaucrat.hpp"
 
-#define NO_GRADE
-
-Bureaucrat::Bureaucrat(): _name("Defaulty"), _grade(NO_GRADE)
-{
-	std::cout << "Constructor of bureaucrat called" << std::endl;
-}
+Bureaucrat::Bureaucrat(){}
 Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
 {
 	std::cout << "Constructor of bureaucrat called" << std::endl;
@@ -13,7 +8,6 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(g
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
 	new (this) Bureaucrat(other._name, other._grade);
-	// this->_grade = other._grade;
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
 Bureaucrat::~Bureaucrat(){
@@ -21,8 +15,8 @@ Bureaucrat::~Bureaucrat(){
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other._name, other._grade);
-	// this->_grade = other._grade;
+	if(this != &other)
+		this->_grade = other._grade;
 	return (*this);
 }
 

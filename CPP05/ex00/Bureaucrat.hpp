@@ -9,10 +9,10 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat();
+		Bureaucrat(const std::string name, int grade);
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat();
 		Bureaucrat & operator = (const Bureaucrat &other);
-		Bureaucrat(const std::string name, int grade);
 		
 		const 				std::string getName()const;
 		int					getGrade()const;
@@ -29,7 +29,6 @@ class Bureaucrat
 		};
 		class				GradeTooLowException : public std::exception
 		{
-	
 			public:
 				virtual const char* what() const throw()
 				{
@@ -38,7 +37,7 @@ class Bureaucrat
 		};
 	private:
 		int					_grade;
-		const	std::string _name;
+		const				std::string _name;
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const &bureaucrat);
