@@ -8,6 +8,7 @@
 int main()
 {
 	PresidentialPardonForm test("Gump");
+	std::cout << test.getSignGrade() << "\n";
 	PresidentialPardonForm test_too("Forrest");
 	RobotomyRequestForm test_three("Connor");
 	RobotomyRequestForm unsigned_form("Sarah");
@@ -127,9 +128,4 @@ int main()
 		std::cerr << e.what();
 	}
 	std::cout << std::endl;
-
-
-
-
-	
 }

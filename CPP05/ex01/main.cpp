@@ -3,13 +3,13 @@
 
 int main()
 {
-	Form test;
+	Form test("test", 50, 100);;
 	Form test_too("test_too", 50, 100);
 	Form test_three("test_three", 50, 100);
 	Form test_four("test_four", 50, 100);
 	Form test_five("test_four", 50, 100);
 
-	Bureaucrat a("Jenkins");
+	Bureaucrat a("Jenkins", 10);
 	try
 	{
 		std::cout << "Bureaucrat signes document because his grade is high enough..." << '\n';

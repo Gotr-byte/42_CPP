@@ -40,7 +40,7 @@ class AForm
 		virtual const		std::string getName() const;
 		virtual const		int getSignGrade()const;
 		virtual const		int getExecuteGrade()const;
-		virtual 			void execute(Bureaucrat const & executor) const;
+		virtual 			void execute(Bureaucrat const & executor) const = 0;
 	private:
 		const std::string	_name;
 		bool				_signed;

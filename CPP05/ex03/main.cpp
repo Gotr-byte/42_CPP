@@ -39,6 +39,10 @@ int main()
 	{
 		std::cerr << e.what();
 	}
+	delete ppf;
+	delete rrf;
+	delete scf;
+	
 	// std::cout << std::endl;
 	// std::cout << "+++Bureaucrat executes the document+++\n";
 	// try

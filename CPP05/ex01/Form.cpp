@@ -1,9 +1,6 @@
 #include "Form.hpp"
 
-Form::Form(): _name("Default"), _signed(false), _signed_grade(50), _execute_grade(20)
-{
-	std::cout << "Constructor of Form called" << std::endl;
-}
+Form::Form(){}
 Form::Form(const std::string name, const int signed_grade, const int execute_grade): _name(name), _signed(false), _signed_grade(signed_grade), _execute_grade(execute_grade)
 {
 	if (_signed_grade < 0)
@@ -18,7 +15,7 @@ Form::Form(const std::string name, const int signed_grade, const int execute_gra
 }
 Form::Form(const Form &other): _name(other._name), _signed(other._signed), _signed_grade(other._signed_grade), _execute_grade(other._execute_grade)
 {
-	std::cout << "Copy constructor of Form has been called" << std::endl;
+		std::cout << "Copy constructor of Form has been called" << std::endl;
 }
 Form::~Form()
 {
@@ -26,8 +23,10 @@ Form::~Form()
 }
 Form & Form::operator = (const Form &other)
 {
-	new (this) Form(other.getName(), other.getSignGrade(), other.getExecuteGrade());
-	this->_signed = other._signed;
+	if(this != &other)
+	{
+		this->_signed = other.checkSignature();
+	}
 	return (*this);
 }
 
