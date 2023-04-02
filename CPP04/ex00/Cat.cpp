@@ -8,10 +8,10 @@ Cat::Cat(const Cat &other){
     if (this != &other) {
         this->_type = other._type;
     }
-    std::cout << "Copy << _type << has been constructed" << std::endl;
+    std::cout << "Copy " << _type << " has been constructed" << std::endl;
 }
 Cat::~Cat(){
-    std::cout << _type <<" destructor called" << std::endl;
+    std::cout << _type << " destructor called" << std::endl;
 }
 Cat & Cat::operator = (const Cat &other){
 
@@ -22,7 +22,10 @@ Cat & Cat::operator = (const Cat &other){
 }
 
 void Cat::makeSound()const{
-    std::cout << "Makes generic " << _type << " sounds" << std::endl;
+    std::cout << " meow" << std::endl;
 }
 
-std::string Cat::getType(){return(this->_type);}
+std::string Cat::getType()
+{
+    return(this->_type);
+    }

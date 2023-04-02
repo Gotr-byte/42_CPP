@@ -3,11 +3,43 @@
 
 int main()
 {
+	std::cout << "The grade is too high\n";
+	try
+	{
+		Bureaucrat m("Jenkins", -11);
+		std::cout << m;
+	}
+	catch(const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
+	std::cout << std::endl;
+	std::cout << "The grade is ok\n";
+	try
+	{
+		Bureaucrat m("Jenkins", 111);
+		std::cout << m;
+	}
+	catch(const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
+	std::cout << std::endl;
+	std::cout << "The grade is too low\n";
+	try
+	{
+		Bureaucrat m("Jenkins", 711);
+		std::cout << m;
+	}
+	catch(const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
+	std::cout << std::endl;
 	std::cout << "Grade to high expected" << std::endl;
-	Bureaucrat j("John Doe");
 	try
 	{	
-		j.setGrade(1);
+		Bureaucrat j("John Doe", 1);
 		std::cout << j;
 		j.setGrade(3);
 		std::cout << j;
@@ -23,10 +55,9 @@ int main()
 	std::cout << "Grade to high test ended" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Grade to low expected" << std::endl;
-	Bureaucrat k("Cesare");
 	try
 	{	
-		k.setGrade(1);
+		Bureaucrat k("Cesare", 1);
 		std::cout << k;
 		k.setGrade(3);
 		std::cout << k;
@@ -60,10 +91,10 @@ int main()
 	std::cout << "Grade to high test ended" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Incrementation / decrementation test, expected grade too low\n";
-	Bureaucrat m("Momo");
 	try
 	{	
-		m.setGrade(149);
+		Bureaucrat m("Momo", 149);
+		std::cout << m;
 		m.incrementGrade();
 		std::cout << m;
 		m.decrementGrade();

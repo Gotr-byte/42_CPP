@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal():_type("Animal"){
+Animal::Animal():_type(){
     std::cout << _type <<" is constructed" << std::endl;
 }
 Animal::Animal(const Animal &other){

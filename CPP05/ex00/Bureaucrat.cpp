@@ -1,17 +1,21 @@
 #include "Bureaucrat.hpp"
+#define NO_GRADE 151
 
-Bureaucrat::Bureaucrat(): _name("Dragos"), _grade(-1)
+Bureaucrat::Bureaucrat(): _name("Defaulty"), _grade(NO_GRADE)
 {
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(-1)
+Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
 {
+	if (grade < 0)
+		throw(GradeTooHighException());
+	else if (grade > 150)
+		throw(GradeTooLowException());
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other.getName());
-	this->_grade = other._grade;
+	new (this) Bureaucrat(other.getName(), other._grade);
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
 Bureaucrat::~Bureaucrat(){
@@ -19,8 +23,7 @@ Bureaucrat::~Bureaucrat(){
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other.getName());
-	this->_grade = other._grade;
+	new (this) Bureaucrat(other.getName(), other._grade);
 	return (*this);
 }
 

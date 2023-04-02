@@ -8,7 +8,7 @@ class AForm
 	public:
 		AForm();
 		AForm(const std::string name, const int signed_grade, const int execute_grade);
-		~AForm();
+		virtual ~AForm();
 		AForm(const AForm &other);
 		AForm & operator = (const AForm &other);
 
@@ -29,9 +29,9 @@ class AForm
 				}
 		};
 		virtual void		beSigned(Bureaucrat &bureaucrat) = 0;
-		virtual const		std::string getName() const;
-		virtual const		int getSignGrade()const;
-		virtual const		int getExecuteGrade()const;
+		const		std::string getName() const;
+		const		int getSignGrade()const;
+		const		int getExecuteGrade()const;
 	private:
 		const std::string	_name;
 		bool				_signed;
