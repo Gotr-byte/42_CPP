@@ -71,10 +71,10 @@ int main()
 	std::cout << "Grade to low test ended" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Grade to high test" << std::endl;
-	Bureaucrat i;
+	
 	try
 	{	
-		i.setGrade(1);
+		Bureaucrat i("Gonzo", 1);
 		std::cout << i;
 		i.setGrade(3);
 		std::cout << i;
