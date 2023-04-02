@@ -87,3 +87,9 @@ void Bureaucrat::signForm(AForm &form)
 		std::cout << this->getName() << " couldn't sign " << form.getName() << " because his grade was too low." << std::endl;
 
 }
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	form.execute(*this);
+	std::cout << this->getName() << " executed " << form.getName();
+}

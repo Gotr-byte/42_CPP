@@ -27,11 +27,20 @@ class AForm
 					return("Grade to low exception\n");
 				}
 		};
+		class		FormNotSignedException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return("Form is not signed\n");
+				}
+		};
 		virtual const		bool checkSignature()const;
 		virtual void		beSigned(Bureaucrat &bureaucrat) = 0;
 		virtual const		std::string getName() const;
 		virtual const		int getSignGrade()const;
 		virtual const		int getExecuteGrade()const;
+		virtual 			void execute(Bureaucrat const & executor) const;
 	private:
 		const std::string	_name;
 		bool				_signed;

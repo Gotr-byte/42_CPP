@@ -70,3 +70,8 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
 {
 	std::cout << "beSigned filler - this should not print\n";
 }
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+	std::cout << "execute filler - this should not print\n";
+}

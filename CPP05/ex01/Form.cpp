@@ -68,6 +68,7 @@ std::ostream & operator<<(std::ostream & o, Form const &form)
 	o << "Form name: " << form.getName() << "\n";
 	o << "Grade of bureucrat to sign: " << form.getSignGrade() << "\n";
 	o << "Grade of bureucrat to execute: " << form.getExecuteGrade() << "\n";
+	o << "Grade with signature(1 for signed): " << form.checkSignature() << "\n";
 	return o;
 }
 
