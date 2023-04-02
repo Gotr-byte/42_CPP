@@ -1,0 +1,123 @@
+PresidentialPardonForm.cpp:35:13: error: use of undeclared identifier 'Form'; did you mean 'AForm'?
+const           bool Form::checkSignature()const
+                     ^~~~
+                     AForm
+./PresidentialPardonForm.hpp:7:7: note: 'AForm' declared here
+class AForm;
+      ^
+PresidentialPardonForm.cpp:49:13: error: invalid operands to binary expression ('std::__1::ostream' (aka 'basic_ostream<char>') and 'void')
+                std::cout << bureaucrat.signForm(*this);
+                ~~~~~~~~~ ^  ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:195:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'std::__1::basic_ostream<char> &(*)(std::__1::basic_ostream<char> &)' for 1st argument
+    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:199:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:204:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:207:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'bool' for 1st argument
+    basic_ostream& operator<<(bool __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:208:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'short' for 1st argument
+    basic_ostream& operator<<(short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:209:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'unsigned short' for 1st argument
+    basic_ostream& operator<<(unsigned short __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:210:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'int' for 1st argument
+    basic_ostream& operator<<(int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:211:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'unsigned int' for 1st argument
+    basic_ostream& operator<<(unsigned int __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:212:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'long' for 1st argument
+    basic_ostream& operator<<(long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:213:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'unsigned long' for 1st argument
+    basic_ostream& operator<<(unsigned long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:214:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'long long' for 1st argument
+    basic_ostream& operator<<(long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:215:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'unsigned long long' for 1st argument
+    basic_ostream& operator<<(unsigned long long __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:216:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'float' for 1st argument
+    basic_ostream& operator<<(float __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:217:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'double' for 1st argument
+    basic_ostream& operator<<(double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:218:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'long double' for 1st argument
+    basic_ostream& operator<<(long double __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:219:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'const void *' for 1st argument
+    basic_ostream& operator<<(const void* __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:220:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'basic_streambuf<std::__1::basic_ostream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_ostream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:223:20: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'std::__1::nullptr_t' for 1st argument
+    basic_ostream& operator<<(nullptr_t)
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:760:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'char' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:793:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:800:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'signed char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:807:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'unsigned char' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:821:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'const char *' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:867:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'const char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:874:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'const signed char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:882:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'const unsigned char *' for 2nd argument
+operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1066:1: note: candidate function template not viable: cannot convert argument of incomplete type 'void' to 'const std::__1::error_code' for 2nd argument
+operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
+^
+./Bureaucrat.hpp:46:16: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'const Bureaucrat' for 2nd argument
+std::ostream & operator<<(std::ostream & o, Bureaucrat const &bureaucrat);
+               ^
+./AForm.hpp:42:16: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'const AForm' for 2nd argument
+std::ostream & operator<<(std::ostream & o, AForm const &form);
+               ^
+./PresidentialPardonForm.hpp:48:16: note: candidate function not viable: cannot convert argument of incomplete type 'void' to 'const PresidentialPardonForm' for 2nd argument
+std::ostream & operator<<(std::ostream & o, PresidentialPardonForm const &presidentialPardonForm);
+               ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:753:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'void')
+operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:814:1: note: candidate template ignored: could not match 'const _CharT *' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1049:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1057:1: note: candidate template ignored: could not match 'basic_string_view<type-parameter-0-0, type-parameter-0-1>' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1074:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1086:1: note: candidate template ignored: could not match 'unique_ptr<type-parameter-0-2, type-parameter-0-3>' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os, unique_ptr<_Yp, _Dp> const& __p)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1/ostream:1093:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'void'
+operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
+^
+2 errors generated.
+make: *** [PresidentialPardonForm.o] Error 1

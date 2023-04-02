@@ -7,7 +7,6 @@ class AForm
 {
 	public:
 		AForm();
-		AForm(const std::string name, const int signed_grade, const int execute_grade);
 		virtual ~AForm();
 		AForm(const AForm &other);
 		AForm & operator = (const AForm &other);
@@ -17,7 +16,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Grade to high\n");
+					return("Grade to high exception\n");
 				}
 		};
 		class		GradeTooLowException : public std::exception
@@ -25,9 +24,10 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Grade to low\n");
+					return("Grade to low exception\n");
 				}
 		};
+		virtual const		bool checkSignature()const;
 		virtual void		beSigned(Bureaucrat &bureaucrat) = 0;
 		virtual const		std::string getName() const;
 		virtual const		int getSignGrade()const;
