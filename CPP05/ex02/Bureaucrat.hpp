@@ -2,6 +2,9 @@
 #include <iostream>
 #include <ostream>
 #include <stdexcept>
+#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat
 {
@@ -10,13 +13,14 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &other);
 		~Bureaucrat();
 		Bureaucrat & operator = (const Bureaucrat &other);
-		Bureaucrat(const std::string name);
+		Bureaucrat(const std::string name, int grade);
 		
 		const std::string	getName()const;
 		int					getGrade()const;
 		void				setGrade(int grade);
 		void				incrementGrade();
 		void				decrementGrade();
+		void				signForm(AForm &form);
 		class				GradeTooHighException : public std::exception
 		{
 			public:

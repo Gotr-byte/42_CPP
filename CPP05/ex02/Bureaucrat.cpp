@@ -1,17 +1,19 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name("Dragos"), _grade(-1)
+#define NO_GRADE
+
+Bureaucrat::Bureaucrat(): _name("Defaulty"), _grade(NO_GRADE)
 {
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(-1)
+Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
 {
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other._name);
-	this->_grade = other._grade;
+	new (this) Bureaucrat(other._name, other._grade);
+	// this->_grade = other._grade;
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
 Bureaucrat::~Bureaucrat(){
@@ -19,8 +21,8 @@ Bureaucrat::~Bureaucrat(){
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other._name);
-	this->_grade = other._grade;
+	new (this) Bureaucrat(other._name, other._grade);
+	// this->_grade = other._grade;
 	return (*this);
 }
 
@@ -64,4 +66,24 @@ void Bureaucrat::decrementGrade()
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat){
 	o << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "\n";
     return o;
+}
+
+
+// void Harl::complain(std::string complainLevel){
+//     std::string const levels[4] = {"DEBUG", "ERROR", "INFO", "WARNING"};
+//     void (Harl::*complaints[4]) (void) = {&Harl::debug, &Harl::error, &Harl::info, &Harl::warning};
+//     int i;
+
+//     for(i = 0; i < 4; i++)
+//         if(levels[i] == complainLevel)
+//             (this->*complaints[i])();
+// }
+
+void Bureaucrat::signForm(AForm &form)
+{
+	if (form.checkSignature())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because his grade was too low." << std::endl;
+
 }
