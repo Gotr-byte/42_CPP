@@ -24,28 +24,16 @@ const std::string RobotomyRequestForm::getName()const
 {
 	return(this->_name);
 }
-<<<<<<< HEAD
 int RobotomyRequestForm::getSignGrade()const
 {
 	return(this->_signed_grade);
 }
 int RobotomyRequestForm::getExecuteGrade()const
-=======
-const int RobotomyRequestForm::getSignGrade()const
-{
-	return(this->_signed_grade);
-}
-const int RobotomyRequestForm::getExecuteGrade()const
->>>>>>> 7527f8c970c141e7ba1a84c852dd94b0e18e2bab
 {
 	return(this->_execute_grade);
 }
 
-<<<<<<< HEAD
 bool RobotomyRequestForm::checkSignature()const
-=======
-const		bool RobotomyRequestForm::checkSignature()const
->>>>>>> 7527f8c970c141e7ba1a84c852dd94b0e18e2bab
 {
 	return(this->_signed);
 }
