@@ -8,17 +8,16 @@
 int main()
 {
 	PresidentialPardonForm test("Gump");
-	std::cout << test.getSignGrade() << "\n";
 	PresidentialPardonForm test_too("Forrest");
 	RobotomyRequestForm test_three("Connor");
 	RobotomyRequestForm unsigned_form("Sarah");
 	ShrubberyCreationForm test_five("House");
-
-	std::cout << test;
 	Bureaucrat a("Jenkins", 5);
 	Bureaucrat b("Jenner", 6);
 	Bureaucrat c("Failey", 149);
-	std::cout << "Bureaucrat signs the document\n";
+	std::cout << "Testing the get sign grade accessor\n";
+	std::cout << "Sign grade of Presidential Pardon: " << test.getSignGrade() << "\n";
+	std::cout << "Bureaucrat signs the document test\n";
 	try
 	{
 		std::cout << a;
@@ -53,6 +52,7 @@ int main()
 	{
 		std::cerr << e.what();
 	}
+	std::cout << std::endl;
 	std::cout << "Bureucrat fails to execute due to lack of signature\n";
 	try
 	{
@@ -64,6 +64,7 @@ int main()
 	{
 		std::cerr << e.what();
 	}
+	std::cout << std::endl;
 	std::cout << "Failed to execute\n";
 	try
 	{

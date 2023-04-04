@@ -52,6 +52,7 @@ std::ostream & operator<<(std::ostream & o, AForm const &form)
 	return o;
 }
 
+<<<<<<< HEAD
 // void Form::beSigned(Bureaucrat &bureaucrat)
 // {
 // 	if (bureaucrat.getGrade() < this->_signed_grade)

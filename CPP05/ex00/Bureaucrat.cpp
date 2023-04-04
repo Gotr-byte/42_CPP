@@ -1,6 +1,5 @@
 #include "Bureaucrat.hpp"
 
-
 Bureaucrat::Bureaucrat():_grade(150), _name("Deffy"){}
 Bureaucrat::Bureaucrat(const std::string name, int grade): _grade(grade), _name(name)
 {
@@ -10,12 +9,10 @@ Bureaucrat::Bureaucrat(const std::string name, int grade): _grade(grade), _name(
 		throw(GradeTooLowException());
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-
 Bureaucrat::Bureaucrat(const Bureaucrat &other): _grade(other.getGrade()), _name(other.getName())
 {
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
-
 Bureaucrat::~Bureaucrat(){
     std::cout << "Bureaucrat destructor called" << std::endl;
 }

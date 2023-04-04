@@ -64,17 +64,6 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat){
     return o;
 }
 
-
-// void Harl::complain(std::string complainLevel){
-//     std::string const levels[4] = {"DEBUG", "ERROR", "INFO", "WARNING"};
-//     void (Harl::*complaints[4]) (void) = {&Harl::debug, &Harl::error, &Harl::info, &Harl::warning};
-//     int i;
-
-//     for(i = 0; i < 4; i++)
-//         if(levels[i] == complainLevel)
-//             (this->*complaints[i])();
-// }
-
 void Bureaucrat::signForm(AForm &form)
 {
 	if (form.checkSignature())

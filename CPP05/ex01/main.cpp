@@ -14,7 +14,6 @@ int main()
 		std::cerr << e.what();
 	}
 	std::cout << "\n";
-	
 	Form test_too("test_too", 50, 100);
 	Form test_three("test_three", 50, 100);
 	Form test_four("test_four", 50, 100);
@@ -55,7 +54,7 @@ int main()
 	}
 	try
 	{
-		std::cout << "Verifying if the exceptions work in this case" << '\n';
+		std::cout << "Verifying if the exceptions work in case grade ofform beeing too high to sign" << '\n';
 		Form test_five("test_three", -1, 15);
 	}
 	catch(const std::exception & e)
@@ -63,7 +62,7 @@ int main()
 		std::cerr << e.what();
 	}
 	std::cout << std::endl;
-	std::cout << "Verifying if the exceptions work in this case" << '\n';
+	std::cout << "Verifying if the exceptions work in case of form having too low grade to sign" << '\n';
 	try
 	{
 		Form test_six("test_four", 151, 15);
@@ -74,6 +73,7 @@ int main()
 	}
 	std::cout << std::endl;
 
+	std::cout << "Copy constructor test\n";
 	Form *Fptr = new Form(test_too);
 	std::cout << *Fptr;
 	delete Fptr;

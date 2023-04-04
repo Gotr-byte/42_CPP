@@ -13,6 +13,7 @@ $(NAME): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	rm -rf *_shrubbery
 
 fclean: clean
 	rm -f $(NAME)

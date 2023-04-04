@@ -1,8 +1,9 @@
 #pragma once
-#include "Animal.hpp"
+#include "AAnimal.hpp"
+#include "Brain.hpp"
 #include <iostream>
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 public:
     Cat();
@@ -11,8 +12,10 @@ public:
     Cat & operator = (const Cat &other);
 
     void makeSound()const;
-    std::string getType();
+    std::string getType()const;
+    Brain *getBrain();
 
 private:
     std::string _type;
+    Brain*      _brain;
 };

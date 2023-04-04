@@ -35,12 +35,12 @@ class AForm
 					return("Form is not signed\n");
 				}
 		};
-		virtual		bool checkSignature()const;
+		virtual	bool 		checkSignature()const;
 		virtual void		beSigned(Bureaucrat &bureaucrat) = 0;
 		virtual const		std::string getName() const;
-		virtual		int getSignGrade()const;
-		virtual		int getExecuteGrade()const;
-		virtual 			void execute(Bureaucrat const & executor) const = 0;
+		virtual	int 		getSignGrade()const;
+		virtual	int 		getExecuteGrade()const;
+		virtual void 		execute(Bureaucrat const & executor) const = 0;
 	private:
 		const std::string	_name;
 		bool				_signed;
