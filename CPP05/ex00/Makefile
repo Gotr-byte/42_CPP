@@ -4,11 +4,12 @@ SRCFILES := Bureaucrat.cpp main.cpp
 CC = c++
 CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wfatal-errors
 OBJS = $(SRCFILES:.cpp=.o)
-
+%o: %cpp
+	$(CC) $(CFLAGS) -c $(SRCFILES)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)

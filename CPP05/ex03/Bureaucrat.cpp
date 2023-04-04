@@ -1,30 +1,25 @@
 #include "Bureaucrat.hpp"
 
-
-Bureaucrat::Bureaucrat():_grade(150), _name("Deffy"){}
-Bureaucrat::Bureaucrat(const std::string name, int grade): _grade(grade), _name(name)
+Bureaucrat::Bureaucrat(): _grade(150), _name("Defaulty")
 {
-	if (grade < 0)
-		throw(GradeTooHighException());
-	else if (grade > 150)
-		throw(GradeTooLowException());
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-
+Bureaucrat::Bureaucrat(const std::string name, int grade): _grade(grade), _name(name)
+{
+	std::cout << "Constructor of bureaucrat called" << std::endl;
+}
 Bureaucrat::Bureaucrat(const Bureaucrat &other): _grade(other.getGrade()), _name(other.getName())
 {
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
-
 Bureaucrat::~Bureaucrat(){
     std::cout << "Bureaucrat destructor called" << std::endl;
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-    if (this != &other) {
-        _grade = other.getGrade();
-    }
-    return *this;
+	if (this != &other)
+		this->_grade = other._grade;
+	return (*this);
 }
 
 const std::string Bureaucrat::getName()const
@@ -46,7 +41,7 @@ void Bureaucrat::setGrade(int grade)
 	else
 	{
 		this->_grade = grade;
-		std::cout << "succesfully set grade to " << grade << std::endl;
+		std::cout << "succesfully set " << this->_name << " grade to " << grade << std::endl;
 	}
 }
 
@@ -64,8 +59,33 @@ void Bureaucrat::decrementGrade()
 	this->_grade = this->_grade + 1;
 }
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat)
-{
+std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat){
 	o << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "\n";
     return o;
+}
+
+
+// void Harl::complain(std::string complainLevel){
+//     std::string const levels[4] = {"DEBUG", "ERROR", "INFO", "WARNING"};
+//     void (Harl::*complaints[4]) (void) = {&Harl::debug, &Harl::error, &Harl::info, &Harl::warning};
+//     int i;
+
+//     for(i = 0; i < 4; i++)
+//         if(levels[i] == complainLevel)
+//             (this->*complaints[i])();
+// }
+
+void Bureaucrat::signForm(AForm &form)
+{
+	if (form.checkSignature())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because his grade was too low." << std::endl;
+
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	form.execute(*this);
+	std::cout << this->getName() << " executed " << form.getName();
 }

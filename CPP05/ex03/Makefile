@@ -1,5 +1,5 @@
-NAME := form
-SRCFILES := Bureaucrat.cpp Form.cpp main.cpp
+NAME := enter_intern
+SRCFILES := Intern.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp AForm.cpp Bureaucrat.cpp PresidentialPardonForm.cpp main.cpp
 
 CC = c++
 CFLAGS = -std=c++98 -Wextra -Werror -Wall

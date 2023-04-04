@@ -1,17 +1,12 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(): _name("Dragos"), _grade(-1)
+Bureaucrat::Bureaucrat():_grade(150), _name("Deffy"){}
+Bureaucrat::Bureaucrat(const std::string name, int grade): _grade(grade), _name(name)
 {
 	std::cout << "Constructor of bureaucrat called" << std::endl;
 }
-Bureaucrat::Bureaucrat(const std::string name): _name(name), _grade(-1)
+Bureaucrat::Bureaucrat(const Bureaucrat &other): _grade(other.getGrade()), _name(other.getName())
 {
-	std::cout << "Constructor of bureaucrat called" << std::endl;
-}
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
-{
-	new (this) Bureaucrat(other._name);
-	this->_grade = other._grade;
     std::cout << "Copy constructor of bureaucrat has been called" << std::endl;
 }
 Bureaucrat::~Bureaucrat(){
@@ -19,8 +14,8 @@ Bureaucrat::~Bureaucrat(){
 }
 Bureaucrat & Bureaucrat::operator = (const Bureaucrat &other)
 {
-	new (this) Bureaucrat(other._name);
-	this->_grade = other._grade;
+	if (this != &other) 
+		this->_grade = other._grade;
 	return (*this);
 }
 
@@ -61,7 +56,16 @@ void Bureaucrat::decrementGrade()
 	this->_grade = this->_grade + 1;
 }
 
-std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat){
+std::ostream &operator<<(std::ostream &o, Bureaucrat const &bureaucrat)
+{
 	o << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "\n";
     return o;
+}
+
+void Bureaucrat::signForm(Form &form)
+{
+	if (form.checkSignature())
+		std::cout << this->getName() << " signed " << form.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't sign " << form.getName() << " because his grade was too low." << std::endl;
 }
