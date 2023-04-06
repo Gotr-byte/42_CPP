@@ -1,8 +1,8 @@
-NAME := scalar_converter
-SRCFILES := scalar_converter.cpp main.cpp
+NAME := serializer
+SRCFILES := serialization.cpp Data.cpp main.cpp
 
 CC = c++
-CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wno-unused -Wconversion -Wfatal-errors -g -fsanitize=address
+CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wno-unused -Wconversion -Wfatal-errors
 OBJS = $(SRCFILES:.cpp=.o)
 %o: %cpp
 	$(CC) $(CFLAGS) -c $(SRCFILES)

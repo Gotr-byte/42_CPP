@@ -2,20 +2,6 @@
 #include "ctype.h"
 #include "stdlib.h"
 
-ScalarConverter::ScalarConverter(){}
-ScalarConverter::~ScalarConverter(){}
-ScalarConverter::ScalarConverter(const ScalarConverter &other){
-    (void)&other;
-}
-ScalarConverter & ScalarConverter::operator = (const ScalarConverter &other){
-    (void)&other;
-    return (*this);
-}
-
-ScalarConverter ScalarConverter::createInstance(){
-            return ScalarConverter();
-        }
-
 bool ScalarConverter::isInteger(const std::string& str) {
     if (str.empty() || (!isdigit(str[0]) && str[0] != '-' && str[0] != '+')) {
         return false;
@@ -30,9 +16,7 @@ bool ScalarConverter::isInteger(const std::string& str) {
         return false;
     }
     int value = atoi(str.c_str());
-    return value != 0 || (str[0] == '0' && str.size() == 1 
-    && std::numeric_limits<int>::min() <= value &&
-    value <= std::numeric_limits<int>::max());
+    return true;
 }
 
 bool ScalarConverter::isFloat (const std::string &str)
@@ -90,31 +74,31 @@ bool ScalarConverter::isDouble (const std::string &str)
 void ScalarConverter::convert(std::string literals){
     if (literals == "nanf" || literals == "nan")
     {
-        std::cout << "char value: " << "out of char bound\n";
-        std::cout << "int value: " << "nan is not implemented in int" << "\n";
-        std::cout << "float value: " << "nanf" <<"\n";
+        std::cout << "char value:   " << "out of char bound\n";
+        std::cout << "int value:    " << "nan is not implemented in int" << "\n";
+        std::cout << "float value:  " << "nanf" <<"\n";
         std::cout << "double value: " << "nan" <<"\n";
     }
     else if (literals == "-inff" || literals == "-inf")
     {
-        std::cout << "char value: " << "out of char bound\n";
-        std::cout << "int value: " << "-2147483648" << "\n";
-        std::cout << "float value: " << "-inff" <<"\n";
+        std::cout << "char value:   " << "out of char bound\n";
+        std::cout << "int value:    " << "-2147483648" << "\n";
+        std::cout << "float value:  " << "-inff" <<"\n";
         std::cout << "double value: " << "-inf" <<"\n";
     }
     else if (literals == "inff" || literals == "inf")
     {
-        std::cout << "char value: " << "out of char bound\n";
-        std::cout << "int value: " << "2147483647" << "\n";
-        std::cout << "float value: " << "inff" <<"\n";
+        std::cout << "char value:   " << "out of char bound\n";
+        std::cout << "int value:    " << "2147483647" << "\n";
+        std::cout << "float value:  " << "inff" <<"\n";
         std::cout << "double value: " << "inf" <<"\n";
     }
     else if (literals.length() == 1 && literals[0] > ' ' &&
      literals[0] < '~' && !isdigit(literals[0]))
     {
-        std::cout << "char value: " << literals[0] << "\n";
-        std::cout << "int value: " << static_cast<int>(literals[0]) << "\n";
-        std::cout << "float value: " << static_cast<float>(literals[0]) << ".0f" <<"\n";
+        std::cout << "char value:   " << literals[0] << "\n";
+        std::cout << "int value:    " << static_cast<int>(literals[0]) << "\n";
+        std::cout << "float value:  " << static_cast<float>(literals[0]) << ".0f" <<"\n";
         std::cout << "double value: " << static_cast<double>(literals[0]) << ".0" <<"\n";
     }
     else if (ScalarConverter::isInteger(literals))
@@ -125,9 +109,9 @@ void ScalarConverter::convert(std::string literals){
         else if(intValue > 127 || intValue < 0)
             std::cout << "char value: out of char bounds\n";
         else
-            std::cout << "char value: " << static_cast<char>(intValue) << "\n";
-        std::cout << "int value: " << intValue << "\n";
-        std::cout << "float value: " << static_cast<float>(intValue) << ".0f" <<"\n";
+            std::cout << "char value:    " << static_cast<char>(intValue) << "\n";
+        std::cout << "int value:    " << intValue << "\n";
+        std::cout << "float value:  " << static_cast<float>(intValue) << ".0f" <<"\n";
         std::cout << "double value: " << static_cast<double>(intValue) << ".0" <<"\n";
     }
     else if (ScalarConverter::isFloat(literals))
@@ -135,20 +119,20 @@ void ScalarConverter::convert(std::string literals){
         float floatValue = strtof(literals.c_str(), NULL);
 
         if (floatValue >= 0 && floatValue < 32)
-            std::cout << "char value: unprintable char \n";
+            std::cout << "char value:   unprintable char \n";
         else if((floatValue >= 127 || floatValue < 0))
-            std::cout << "char value: out of char bounds\n";
+            std::cout << "char value:   out of char bounds\n";
         else
-            std::cout << "char value: " << static_cast<char>(floatValue) << "\n";
-        std::cout << "int value: " << static_cast<int>(floatValue) << "\n";
+            std::cout << "char value:    " << static_cast<char>(floatValue) << "\n";
+            std::cout << "int value:    " << static_cast<int>(floatValue) << "\n";
         if (fmod(floatValue, 1) == 0)
         {
-            std::cout << "float value: " << floatValue << ".0f\n";
+            std::cout << "float value:  " << floatValue << ".0f\n";
             std::cout << "double value: " << static_cast<double>(floatValue) <<".0\n";
         } 
         else 
         {
-            std::cout << "float value: " << floatValue << "f\n";
+            std::cout << "float value:  " << floatValue << "f\n";
             std::cout << "double value: " << static_cast<double>(floatValue) <<"\n";
         }
     }
@@ -156,28 +140,28 @@ void ScalarConverter::convert(std::string literals){
     {
         double doubleValue = strtod(literals.c_str(), NULL);
         if (doubleValue >= 0 && doubleValue < 32)
-            std::cout << "char value: unprintable char \n";
+            std::cout << "char value:   unprintable char \n";
         else if((doubleValue >= 127 || doubleValue < 0))
-            std::cout << "char value: out of char bounds\n";
+            std::cout << "char value:   out of char bounds\n";
         else
-            std::cout << "char value: " << static_cast<char>(doubleValue) << "\n";
-         std::cout << "int value: " << static_cast<int>(doubleValue) << "\n";
+            std::cout << "char value:    " << static_cast<char>(doubleValue) << "\n";
+            std::cout << "int value:    " << static_cast<int>(doubleValue) << "\n";
          if (fmod(doubleValue, 1) == 0)
         {
-            std::cout << "float value: " << static_cast<float>(doubleValue) << ".0f" <<"\n";
+            std::cout << "float value:  " << static_cast<float>(doubleValue) << ".0f" <<"\n";
             std::cout << "double value: " << doubleValue <<".0\n";
         } 
         else 
         {
-             std::cout << "float value: " << static_cast<float>(doubleValue) << "f" <<"\n";
+            std::cout << "float value:  " << static_cast<float>(doubleValue) << "f" <<"\n";
             std::cout << "double value: " << doubleValue <<"\n";
         }
     }
     else
     {
-        std::cout << "char value: " << "conversion not available\n";
-        std::cout << "int value: " << "conversion not available\n";
-        std::cout << "float value: " << "conversion not available\n";
+        std::cout << "char value:   " << "conversion not available\n";
+        std::cout << "int value:    " << "conversion not available\n";
+        std::cout << "float value:  " << "conversion not available\n";
         std::cout << "double value: " << "conversion not available\n";
     }
 }
