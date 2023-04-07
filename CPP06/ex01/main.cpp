@@ -1,6 +1,5 @@
 #include "serialization.hpp"
 
-
 int main()
 {
     Data *dataBeforeSerialize = new Data();

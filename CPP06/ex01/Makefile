@@ -2,7 +2,7 @@ NAME := serializer
 SRCFILES := serialization.cpp Data.cpp main.cpp
 
 CC = c++
-CFLAGS = -std=c++98 -Wextra -Werror -Wall -Wno-unused -Wconversion -Wfatal-errors
+CFLAGS = -std=c++98 -pedantic -Wextra -Werror -Wall -Wno-unused -Wconversion -Wfatal-errors
 OBJS = $(SRCFILES:.cpp=.o)
 %o: %cpp
 	$(CC) $(CFLAGS) -c $(SRCFILES)
