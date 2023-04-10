@@ -21,7 +21,7 @@ int main(){
     std::cout << "+++ Array assignment operator test +++\n";
     Array <int>assignmentOpTest;
     assignmentOpTest = copyArr;
-    std::cout << "Origin array size: "`  << arrOfSize.size() << "\n";
+    std::cout << "Origin array size: "  << arrOfSize.size() << "\n";
     std::cout << "Copy array size: " << assignmentOpTest.size() << "\n";
     std::cout << "+++ End of assignment operator test +++" << "\n";
     std::cout << "\n";

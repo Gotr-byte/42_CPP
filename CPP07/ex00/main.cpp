@@ -40,7 +40,7 @@ int main()
     std::cout << "min(" << e <<", "<< f <<") = " << min(e,f) << std::endl;
     std::cout << "max(" << e <<", "<< f <<") = " << max(e,f) << std::endl;
     std::cout << std::endl;
-       std::cout << "+++double test+++" << std::endl;
+    std::cout << "+++double test+++" << std::endl;
     std::cout << "g equals: " << g << std::endl;
     std::cout << "h equals: " << h << std::endl;
     swap(a, b);
