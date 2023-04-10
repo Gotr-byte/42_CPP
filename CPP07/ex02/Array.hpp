@@ -1,25 +1,38 @@
 #pragma once
+#include <iostream>
 
 template <typename T>
 class Array {
     public:
         T* arrayPtr;
+        unsigned int _size;
         Array(){
-            arrayPtr = NULL;
+            _size = 0;
         }
         Array(unsigned int n){
-            this->numbElements = n;
             arrayPtr = new T[n];
-            arrayPtr[n + 1] = NULL;
+            _size = n;
         }
-        Array(const Array &other)const{
+        Array(Array &other){
             if(this != &other)
             {   
-                int i = 0;
                 this->arrayPtr = new T[other.size()];
-                // while (i < other.size())
-                //     this->arrayPtr[i]->numbElements = other.arrayPtr[i]->numbElements;
+                this->_size = other.size();
             }
+        }
+        Array & operator = (Array &other)
+        {
+            if(this != &other)
+            {   
+                this->arrayPtr = new T[other.size()];
+                this->_size = other.size();
+            }
+            return *this;
+        }
+        ~Array(){
+            if(arrayPtr)
+                delete []arrayPtr;
+            std::cout << "Memory freed\n";
         }
         class				OutOfIndexBoundsException : public std::exception
 		{
@@ -30,20 +43,16 @@ class Array {
 				}
 		};
         unsigned int size(){
-            unsigned int size = 0;
-            while(arrayPtr[size])
-                size++;
-            return(size);
+            return(this->_size);
         }
-
-    private:
+        T& operator[](unsigned int index) {
+            if(index < 0) {
+                throw OutOfIndexBoundsException();
+            }
+            if(index >= size()) {
+                throw OutOfIndexBoundsException();
+            }
+            std::cout << "Accessing element at index " << index << std::endl;
+            return arrayPtr[index];
+        }
 };
-
-    // if(this != &other)
-    // {
-    //     _type = "Cat";
-    //     _brain = new Brain();
-    //     for(int i = 0; i < 100; i++)
-    //         _brain->setIdea(i, other._brain->getIdea(i));
-    //     std::cout << "Copy cat constructor has been called" << std::endl;
-    // }

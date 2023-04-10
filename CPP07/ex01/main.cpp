@@ -20,7 +20,6 @@ void iter(T *arrPtr, int len, void (*fun)(T &))
 
 int main()
 {
-    // std::string names[3] = {"Alice", "Bob", "Charlie"}; // create an array of 3 strings
    
     std::string* armour_types = new std::string[3]; // assign the address of the first element to ptr
     armour_types[0] = "light";

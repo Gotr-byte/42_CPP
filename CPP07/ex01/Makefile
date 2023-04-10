@@ -1,4 +1,4 @@
-NAME := templates
+NAME := iter
 SRCFILES := main.cpp
 
 CC = c++

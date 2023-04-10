@@ -1,4 +1,4 @@
-NAME := templates
+NAME := array
 SRCFILES := main.cpp
 
 CC = c++
