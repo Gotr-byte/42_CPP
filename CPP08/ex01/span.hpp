@@ -7,14 +7,16 @@
 class Span
 {
     public:
+        Span();
         Span(int N);
         Span(const Span &other);
         ~Span();
         Span & operator = (const Span &other);
 
-        void addNumber();
-        void shortestSpan();
-        void longestSpan();
+        void addNumber(int num);
+        void addRandNumber();
+        int shortestSpan();
+        int longestSpan();
         void printVals();
         class				TooManyNumbers : public std::exception
             {
@@ -35,6 +37,4 @@ class Span
         int                  _N;
         int                  _addedNumbers;
         std::list<int>       _listSpan;
-        int                  _lowestValue;
-        int                  _highestValue;
 };

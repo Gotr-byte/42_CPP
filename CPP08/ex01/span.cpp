@@ -1,5 +1,6 @@
 #include "span.hpp"
 
+Span::Span():_N(0), _addedNumbers(0){}
 Span::Span(int N): _N(N), _addedNumbers(0){
 }
 Span::Span(const Span &other){
@@ -7,8 +8,6 @@ Span::Span(const Span &other){
         this->_N = other._N;
         this->_addedNumbers = other._addedNumbers;
         this->_listSpan = other._listSpan;
-        this->_lowestValue = other._lowestValue;
-        this->_highestValue = other._highestValue;
     }
 }
 Span::~Span(){}
@@ -17,31 +16,27 @@ Span & Span::operator = (const Span &other){
         this->_N = other._N;
         this->_addedNumbers = other._addedNumbers;
         this->_listSpan = other._listSpan;
-        this->_lowestValue = other._lowestValue;
-        this->_highestValue = other._highestValue;
     }
     return *this;
 }
 
-void Span::addNumber(){
+void Span::addNumber(int num){
+    if (this->_addedNumbers >= this->_N)
+        throw(TooManyNumbers());
+    this->_listSpan.push_back(num);
+    this->_addedNumbers = this->_addedNumbers + 1;
+}
+
+void Span::addRandNumber(){
     if (this->_addedNumbers >= this->_N)
         throw(TooManyNumbers());
         
     int random_num = rand() % 10000;
-    if (this->_addedNumbers == 0)
-    {
-        this->_lowestValue = random_num;
-        this->_highestValue = random_num;
-    }
-    if (random_num > _highestValue)
-        this->_highestValue = random_num;
-    if (random_num < _lowestValue)
-        this->_lowestValue = random_num;
     this->_listSpan.push_back(random_num);
     this->_addedNumbers = this->_addedNumbers + 1;
 }
 
-void Span::longestSpan()
+int Span::longestSpan()
 {
     if (this->_addedNumbers < 2)
         throw(NotEnoughNumbersToDetermineSpan());
@@ -72,10 +67,10 @@ void Span::longestSpan()
             }
         }
     }
-    std::cout << "highSpan equals: " << highSpan << "\n";
+    return (highSpan);
 }
 
-void Span::shortestSpan(){
+int Span::shortestSpan(){
     if (this->_addedNumbers < 2)
         throw(NotEnoughNumbersToDetermineSpan());
     std::list<int>::const_iterator      it;
@@ -105,5 +100,5 @@ void Span::shortestSpan(){
             }
         }
     }
-    std::cout << "lowSpan equals: " << lowSpan << "\n";
+    return(lowSpan);
 }
