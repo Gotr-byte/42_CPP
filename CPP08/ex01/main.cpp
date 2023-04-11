@@ -4,6 +4,7 @@ int main()
 {
     Span span(10000);
     Span sp = Span(5);
+    Span empty;
 
     std::cout << "+++10000 number span test+++\n";
     try
@@ -29,5 +30,15 @@ int main()
     std::cout << sp.longestSpan() << std::endl;
 
     std::cout << "+++end of set number span test+++\n\n";
-
+    
+    try
+    {
+       empty.shortestSpan();
+    }
+    catch(const std::exception & e)
+	{
+		std::cerr << e.what();
+	}
+    
+    //add test when there not enough numbers to give
 }
