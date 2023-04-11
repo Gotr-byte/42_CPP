@@ -1,5 +1,5 @@
-NAME := span
-SRCFILES := main.cpp span.cpp
+NAME := mutantStack
+SRCFILES := main.cpp
 
 CC = c++
 CFLAGS = -std=c++98 -pedantic -Wextra -Werror -Wall
