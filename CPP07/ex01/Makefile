@@ -2,7 +2,7 @@ NAME := iter
 SRCFILES := main.cpp
 
 CC = c++
-CFLAGS = -std=c++98 -pedantic -Wextra -Werror -Wall -Wno-unused -Wconversion -Wfatal-errors 
+CFLAGS = -std=c++98 -Wextra -Werror -Wall -pedantic
 #-g -fsanitize=address
 OBJS = $(SRCFILES:.cpp=.o)
 %o: %cpp

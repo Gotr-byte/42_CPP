@@ -1,14 +1,8 @@
 #pragma once
+#include <iostream>
 
-template<typename T>
-void iter(T *arrPtr, int len, void (*fun)(T &))
-{
-    int i = 0;
-    while (i < len)
-    {
-        fun(arrPtr[i]);
-        i++;
-        std::cout << i;
-    }
+template <typename T>
+void iter(T *arrPtr, unsigned int len, void (* fun)(T&)){
+    while (len--)
+        fun(arrPtr[len]);
 }
-
