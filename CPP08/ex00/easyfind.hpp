@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <algorithm>
+// #include <algorithm>
 #include <list>
 
 
@@ -9,7 +9,7 @@ int easy_find(T intContainer, int integerToCompare){
     // typename T::const_iterator      it;
     // typename T::const_iterator      ite = intContainer.end();
     
-    for_each(lst.begin(), lst.end(), integerToCompare);
+    for_each(T.begin(), T.end(), integerToCompare);
 
     // for (it = intContainer.begin(); it != ite; ++it)
     // {
