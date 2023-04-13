@@ -52,7 +52,7 @@ class Array {
             if(index >= size()) {
                 throw OutOfIndexBoundsException();
             }
-            std::cout << "Accessing element at index " << index << std::endl;
+            // std::cout << "Accessing element at index " << index << std::endl;
             return arrayPtr[index];
         }
 };

@@ -1,16 +1,14 @@
-NAME := iter
+NAME := btc
 SRCFILES := main.cpp
 
 CC = c++
-CFLAGS = -std=c++98 -Wextra -Werror -Wall -pedantic
-#-g -fsanitize=address
+CFLAGS = -std=c++98 -pedantic -Wextra -Werror -Wall
 OBJS = $(SRCFILES:.cpp=.o)
 %o: %cpp
 	$(CC) $(CFLAGS) -c $(SRCFILES)
 all: $(NAME)
 
- $(NAME): $(OBJS)
-#	$(CC) $(CFLAGS) -o $(NAME)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:

@@ -25,7 +25,7 @@ int main()
     std::cout << "+++char test+++" << std::endl;
     std::cout << "c equals: " << c << std::endl;
     std::cout << "d equals: " << d << std::endl;
-    swap(a, b);
+    swap(c, d);
     std::cout << "c equals: " << c << std::endl;
     std::cout << "d equals: " << d << std::endl;
     std::cout << "min(" << c <<", "<< d <<") = " << min(c,d) << std::endl;
@@ -34,7 +34,7 @@ int main()
     std::cout << "+++float test+++" << std::endl;
     std::cout << "e equals: " << e << std::endl;
     std::cout << "f equals: " << f << std::endl;
-    swap(a, b);
+    swap(e, f);
     std::cout << "e equals: " << e << std::endl;
     std::cout << "f equals: " << f << std::endl;
     std::cout << "min(" << e <<", "<< f <<") = " << min(e,f) << std::endl;
@@ -43,7 +43,7 @@ int main()
     std::cout << "+++double test+++" << std::endl;
     std::cout << "g equals: " << g << std::endl;
     std::cout << "h equals: " << h << std::endl;
-    swap(a, b);
+    swap(g, h);
     std::cout << "g equals: " << g << std::endl;
     std::cout << "h equals: " << h << std::endl;
     std::cout << "min(" << g <<", "<< h <<") = " << min(g,h) << std::endl;

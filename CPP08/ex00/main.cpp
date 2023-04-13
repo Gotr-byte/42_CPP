@@ -11,9 +11,11 @@ int main()
     lst1.push_back(42);
 
     std::cout << "+++Valid entry test+++\n";
-    easy_find(lst1, toSearch);
+    if(easy_find(lst1, toSearch))
+        return(1);
     std::cout << "+++Valid entry test end+++\n\n";
      std::cout << "+++Invalid entry test+++\n";
-    easy_find(lst1, notFind);
+    if(easy_find(lst1, notFind))
+        return(1);
     std::cout << "+++Invalid entry test end+++\n";
 }

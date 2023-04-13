@@ -1,1 +1,1 @@
-c++ -std=c++98 -Wall -Wextra -Werror
+

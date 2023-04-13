@@ -39,6 +39,4 @@ int main()
 	{
 		std::cerr << e.what();
 	}
-    
-    //add test when there not enough numbers to give
 }

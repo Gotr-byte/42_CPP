@@ -6,17 +6,19 @@
 
 template<typename T>
 int easy_find(T intContainer, int integerToCompare){
-    typename T::const_iterator      it;
-    typename T::const_iterator      ite = intContainer.end();
+    // typename T::const_iterator      it;
+    // typename T::const_iterator      ite = intContainer.end();
     
-    for (it = intContainer.begin(); it != ite; ++it)
-    {
-        if (*it == integerToCompare)
-        {
-            std::cout << "The integer value you are searching for equals: " << *it << "\n";
-            return 0;
-        }
-    }
+    for_each(lst.begin(), lst.end(), integerToCompare);
+
+    // for (it = intContainer.begin(); it != ite; ++it)
+    // {
+    //     if (*it == integerToCompare)
+    //     {
+    //         std::cout << "The integer value you are searching for equals: " << *it << "\n";
+    //         return 0;
+    //     }
+    // }
     std::cerr << "integer not found" << "\n";
     return(1);
 }

@@ -1,4 +1,6 @@
 #include "Array.hpp"
+#include <iostream>
+#include <string>
 
 int main(){
     std::cout << "+++ Empty array test +++" << "\n";
@@ -33,14 +35,26 @@ int main(){
     copyArr[1];
     copyArr[2];
     copyArr[3];
-    copyArr[4];
+    std::cout << "++printing value before changin it ++" << copyArr[4] << std::endl;
+    copyArr[4] = 1;
+    std::cout << "++printing value after changin it value of copy :" <<  copyArr[4]<< "++" << std::endl;
+    std::cout << "++printing value after changin it value of origin :" <<  arrOfSize[4]<< "++" << std::endl;
     copyArr[5];
-    }
+        }
     catch(const std::exception & e)
 	{
 		std::cerr << e.what();
 	}
     std::cout << "+++ End of accesing test +++" << "\n";
     std::cout << "\n";
-
+    std::string sparta = "300";
+    int leonidas = std::stoi(sparta, NULL, 10);
+    std::cout << "This is " << leonidas << std::endl;
 }
+
+// int main()
+// {
+//      char *array = new char[1];
+//      array[0] = 0;
+//      std::cout << array[0];
+// }
