@@ -1,58 +1,7 @@
 #include "BitcoinExchange.hpp"
 
-#include <iostream>
-#include <fstream>
-#include <cstdlib>
-#include <map>
-
-int priceCoinAmmount( std::map<int, double> &myMap, int target, double coinAmmout) {
-    std::map<int, double>::iterator it = myMap.upper_bound(target);
-    if (it != myMap.begin()) {
-        --it; // decrement the iterator to get the closest smaller or equal key
-        std::cout << "Closest smaller or equal key: " << it->first << ":" << target << " | " << coinAmmout << " | " << it->second << std::endl;
-    } else {
-        std::cout << "No smaller or equal key found." << std::endl;
-    }
-    return 0;
-}
-
-void printMap(const std::map<int, double>& myMap) {
-	std::map<int, double>::const_iterator      it;
-	for (it = myMap.begin(); it != myMap.end(); ++it){
-		std::cout << "key " << it->first << " holds value " << it->second << "\n";
-    }
-}
-
-int readDateKey(std::string inputLine)
-{
-    std::string year = inputLine.substr(0,4);
-    std::string month = inputLine.substr(5,2);
-    std::string day = inputLine.substr(8,2);
-    std::string date = year + month + day;
-    int dateKey = atoi(date.c_str());
-    return dateKey;
-}
-
-double readValuePrice(std::string inputLine) {
-    size_t startPos = 11;
-    size_t endPos = inputLine.find('\n', startPos);
-    std::string priceToCast = inputLine.substr(startPos, endPos - startPos);
-    double priceToReturn = atof(priceToCast.c_str());
-    return priceToReturn;
-}
-
-double readValueCoin(std::string inputLine) {
-    size_t startPos = 13;
-    size_t endPos = inputLine.find('\n', startPos);
-    std::string priceToCast = inputLine.substr(startPos, endPos - startPos);
-    //TODO should throw error if invalid input with reasons
-    double priceToReturn = atof(priceToCast.c_str());
-    return priceToReturn;
-}
-
 int main (int argc, char** argv)
 {
-
 	if (argc != 2){
 		std::cerr << "Error: invalid arguments\n";
 		return 1;
@@ -62,8 +11,7 @@ int main (int argc, char** argv)
     std::string         bitMineLine;
 	std::string         bitPriceLine;
     std::map<int, double> priceMap;
-	std::map<int, double> coinMap;
-
+	std::unordered_map<int, double> coinMap;
     int key;
     double valueToAdd;
 
@@ -79,9 +27,9 @@ int main (int argc, char** argv)
     }
 	while(getline(inputBitMine, bitMineLine)){
 		std::cout << bitMineLine << std::endl;
-		key = readDateKey(bitMineLine);
-		valueToAdd = readValueCoin(bitMineLine);
-		std::map<int, double>::iterator iit = coinMap.find(key);
+		key = BitcoinExchange::readDateKey(bitMineLine);
+		valueToAdd = BitcoinExchange::readValueCoin(bitMineLine);
+		std::unordered_map<int, double>::iterator iit = coinMap.find(key);
         if (iit != coinMap.end()) {
 			 iit->second += valueToAdd;
 		} else {
@@ -90,11 +38,10 @@ int main (int argc, char** argv)
 	}
     inputBitMine.close();
 	while(getline(inputBitStock, bitPriceLine)){
-        key = readDateKey(bitPriceLine);
-        valueToAdd = readValuePrice(bitPriceLine);
+        key = BitcoinExchange::readDateKey(bitPriceLine);
+        valueToAdd = BitcoinExchange::readValuePrice(bitPriceLine);
         std::map<int, double>::iterator it = priceMap.find(key);
         if (it != priceMap.end()) {
-			//TODO exception at this point
             // std::cout << "Key " << key << "Warning: Price entry already mapped" << it->second << std::endl;
         } else {
             priceMap[key] += valueToAdd;
@@ -102,9 +49,10 @@ int main (int argc, char** argv)
 	}
     inputBitStock.close();
 
-	std::map<int, double>::const_iterator      it;
+    // BitcoinExchange::printMap(priceMap);
+	std::unordered_map<int, double>::const_iterator      it;
 
 	for (it = coinMap.begin(); it != coinMap.end(); ++it)
-		priceCoinAmmount(priceMap, it->first, it->second);
+		BitcoinExchange::priceCoinAmmount(priceMap, it->first, it->second);
     //we have a map of dates and prices
 }

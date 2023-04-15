@@ -1,3 +1,4 @@
+// little code to check map validity works friom 9999BC to AD9999
 #include <iostream>
 #include <stdlib.h>
 
@@ -8,11 +9,7 @@ int main(int argc, char** argv)
 	int day = atoi(argv[3]);
 	int leap = -1;
 
-	if(!(year % 4) && (year%100))
-		leap = 1;
-	else if(!(year % 100) && (year % 400))
-		leap = 0;
-	else if(!(year % 400))
+	if(!(year % 4) && (year%100) || !(year % 400))
 		leap = 1;
 	else
 		leap = 0;
@@ -21,29 +18,21 @@ int main(int argc, char** argv)
 		std::cout << "month not ok\n";
 	else if(month == 2)
 	{
-		if(leap && day > 29)
-			std::cout << "day not ok" << "\n";
-		else if(!leap && day > 28)
-			std::cout << "day not ok" << "\n";
-		else if(day < 1)
+		if(leap && day > 29 ||(!leap && day > 28)||(!leap && day > 28))
 			std::cout << "day not ok" << "\n";
 		else
 			std::cout << "day is ok" << "\n";
 	}
 	else if (month % 2)
 	{
-		if (day > 31)
-			std::cout << "day not ok" << "\n";
-		else if (day < 1)
+		if (day > 31 || day < 1)
 			std::cout << "day not ok" << "\n";
 		else
 			std::cout << "day is ok" << "\n";
 	}
 	else if (!(month % 2))
 	{
-		if (day > 30)
-			std::cout << "day not ok" << "\n";
-		else if (day < 1)
+		if (day > 30 || day < 1)
 			std::cout << "day not ok" << "\n";
 		else
 			std::cout << "day is ok" << "\n";
