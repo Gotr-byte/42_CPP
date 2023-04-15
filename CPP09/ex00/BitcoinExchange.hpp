@@ -2,28 +2,30 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <stdexcept>
 #include <map>
-#include <unordered_map>
 
 class BitcoinExchange
 {
     public:
-        static void printMap(const std::map<int, double>& myMap);
-        static int readDateKey(std::string inputLine);
-        static double readValuePrice(std::string inputLine);
-        static double readValueCoin(std::string inputLine);
-        static int priceCoinAmmount(std::map<int, double> &myMap, int target, double coinAmmout);
+        BitcoinExchange();
+        BitcoinExchange(const BitcoinExchange &other);
+        BitcoinExchange & operator = (const BitcoinExchange &other);
+        ~BitcoinExchange();
+
+        void        printMap(const std::map<int, double>& myMap);
+        int         readDateKey(std::string inputLine);
+        double      readValuePrice(std::string inputLine);
+        double      readValueCoin(std::string inputLine);
+        int         priceCoinAmmount(std::map<int, double> &myMap, int target, double coinAmmout);
+        static bool dateValid(int year, int month, int day);
         class				        InvalidDateException : public std::exception
 		{
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Grade to high\n");
+					return("Invalid Date");
 				}
 		};
     private:
-        BitcoinExchange();
-        BitcoinExchange(const BitcoinExchange &other);
-        BitcoinExchange & operator = (const BitcoinExchange &other);
-        ~BitcoinExchange();
 };
