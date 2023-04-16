@@ -28,15 +28,51 @@ void BitcoinExchange::printMap(const std::map<int, double>& myMap) {
     }
 }
 
+bool checkNum(std::string checkedInput)
+{
+	for(int i = 0; checkedInput[i] && checkedInput[i] != '\n'; i++){
+		if (!(isnumber(checkedInput[i])))
+		{
+			return (false);
+		}
+	}
+	return(true);
+}
+
+bool checkNumFloat(std::string checkedInput)
+{
+	int i ;
+	for(i = 0; checkedInput[i] && checkedInput[i] != '\n' && checkedInput[i] != '.'; i++){
+		if (!(isnumber(checkedInput[i])))
+		{
+			return (false);
+		}
+	}
+	i++;
+	while( checkedInput[i] && checkedInput[i] != '\n'){
+		if (!(isnumber(checkedInput[i])))
+		{
+			return (false);
+		}
+		i++;
+	}
+	return(true);
+}
+
 int BitcoinExchange::readDateKey(std::string inputLine)
 {
     std::string year = inputLine.substr(0,4);
+	if(!checkNum(year))
+		throw(InvalidFormat());
     std::string month = inputLine.substr(5,2);
+	if(!checkNum(month))
+		throw(InvalidFormat());
     std::string day = inputLine.substr(8,2);
+	if(!checkNum(day))
+		throw(InvalidFormat());
     std::string date = year + month + day;
     int dateKey = atoi(date.c_str());
 	if(!(BitcoinExchange::dateValid(atoi(year.c_str()), atoi(month.c_str()), atoi(day.c_str())))){
-		// std::cout << "exception thrown at: " << inputLine << "\n";
 		throw(InvalidDateException());
 	}
     return dateKey;
@@ -54,8 +90,16 @@ double BitcoinExchange::readValueCoin(std::string inputLine) {
     size_t startPos = 13;
     size_t endPos = inputLine.find('\n', startPos);
     std::string priceToCast = inputLine.substr(startPos, endPos - startPos);
+	if (inputLine.substr(10, 3) != " | ")
+		throw(InvalidFormat());
+	if(!checkNumFloat(priceToCast))
+		throw(InvalidFormat());
     //TODO should throw error if invalid input with reasons
     double priceToReturn = atof(priceToCast.c_str());
+	if (priceToReturn < 0)
+		throw(BitValueTooLow());
+	if (priceToReturn > 1000)
+		throw(BitValueTooHigh());
     return priceToReturn;
 }
 
