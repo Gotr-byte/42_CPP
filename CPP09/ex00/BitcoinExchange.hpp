@@ -13,6 +13,8 @@ class BitcoinExchange
         BitcoinExchange & operator = (const BitcoinExchange &other);
         ~BitcoinExchange();
 
+        bool        checkNum(std::string checkedInput);
+        bool        checkNumFloat(std::string checkedInput);
         void        printMap(const std::map<int, double>& myMap);
         int         readDateKey(std::string inputLine);
         double      readValuePrice(std::string inputLine);
@@ -60,4 +62,5 @@ class BitcoinExchange
 				}
 		};
     private:
+      
 };

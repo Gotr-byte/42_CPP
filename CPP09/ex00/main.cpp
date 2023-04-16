@@ -6,8 +6,6 @@ int main (int argc, char** argv)
 		std::cerr << "Error: invalid arguments\n";
 		return 1;
 	}
-    //TODO data.csv has to be checked
-	//TODO the first line is not taken into account
     BitcoinExchange bitcoinExchange;
     std::string         bitMineLine;
 	std::string         bitPriceLine;
@@ -39,7 +37,7 @@ int main (int argc, char** argv)
             valueToAdd = bitcoinExchange.readValuePrice(bitPriceLine);
             std::map<int, double>::iterator it = priceMap.find(key);
             if (it != priceMap.end()) {
-                std::cout << "Warning: Price entry at date "<< key << " already mapped, not overwritten with redundant value " << it->second << std::endl;
+                std::cerr << "Warning: Price entry at date "<< key << " already mapped, not overwritten with redundant value " << it->second << std::endl;
             } else {
                 priceMap[key] += valueToAdd;
             }
@@ -49,7 +47,6 @@ int main (int argc, char** argv)
             std::cerr << e.what() << " at " << bitPriceLine << "\n";
         }
     }
-  
     inputBitStock.close();
     getline(inputBitMine, bitMineLine);
 

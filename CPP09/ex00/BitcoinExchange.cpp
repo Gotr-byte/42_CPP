@@ -10,11 +10,47 @@
     }
     BitcoinExchange::~BitcoinExchange(){}
 
-    int BitcoinExchange::priceCoinAmmount(std::map<int, double> &myMap, int target, double coinAmmout) {
+
+	void printMonth(int month)
+	{
+		if (month < 10)
+			std::cout << 0 << month;
+		else
+			std::cout << month;
+	}
+
+	void printDay(int day)
+	{
+		if (day < 10)
+			std::cout << 0 << day;
+		else
+			std::cout << day;
+	}
+
+	void printYear(int year)
+	{
+		if (year < 10)
+			std::cout << 000 << year;
+		else if(year < 100)
+			std::cout << 00 << year;
+		else if(year < 1000)
+			std::cout << 0 << year;
+		else
+			std::cout << year;
+	}
+
+
+//expected output  2011-01-03 => 3 = 0.9
+    int BitcoinExchange::priceCoinAmmount(std::map<int, double> &myMap, int target, double coinAmount) {
     std::map<int, double>::iterator it = myMap.upper_bound(target);
     if (it != myMap.begin()) {
         --it; // decrement the iterator to get the closest smaller or equal key
-        std::cout << "Closest smaller or equal key: " << it->first << ":" << target << " | " << coinAmmout << " | " << it->second << std::endl;
+        printYear(target / 10000);
+		std::cout << "-";
+		printMonth((target % 10000) / 100);
+		std::cout << "-";
+		printDay(target % 100);
+		std::cout << " => " << coinAmount << " = " << it->second * coinAmount<< std::endl;
     } else {
         std::cout << "No smaller or equal key found." << std::endl;
     }
@@ -28,7 +64,7 @@ void BitcoinExchange::printMap(const std::map<int, double>& myMap) {
     }
 }
 
-bool checkNum(std::string checkedInput)
+bool BitcoinExchange::checkNum(std::string checkedInput)
 {
 	for(int i = 0; checkedInput[i] && checkedInput[i] != '\n'; i++){
 		if (!(isnumber(checkedInput[i])))
@@ -39,7 +75,7 @@ bool checkNum(std::string checkedInput)
 	return(true);
 }
 
-bool checkNumFloat(std::string checkedInput)
+bool BitcoinExchange::checkNumFloat(std::string checkedInput)
 {
 	int i ;
 	for(i = 0; checkedInput[i] && checkedInput[i] != '\n' && checkedInput[i] != '.'; i++){
