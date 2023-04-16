@@ -26,7 +26,7 @@ class BitcoinExchange
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Invalid Date at entry");
+					return("Error: Invalid date");
 				}
 		};
         class				        BitValueTooLow : public std::exception
@@ -34,7 +34,7 @@ class BitcoinExchange
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: value too low at entry");
+					return("Error: value too low");
 				}
 		};
         class				        BitValueTooHigh : public std::exception
@@ -42,7 +42,7 @@ class BitcoinExchange
 			public:
 				virtual const char* what() const throw()
 				{
-					return("Error: value too high at entry");
+					return("Error: value too high");
 				}
 		};
         class				        BitValueTooManyDigits : public std::exception
