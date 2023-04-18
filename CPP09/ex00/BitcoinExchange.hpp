@@ -9,8 +9,7 @@ class BitcoinExchange
 {
     public:
         BitcoinExchange();
-        BitcoinExchange(const BitcoinExchange &other);
-        BitcoinExchange & operator = (const BitcoinExchange &other);
+  
         ~BitcoinExchange();
 
         bool        checkNum(std::string checkedInput);
@@ -62,5 +61,7 @@ class BitcoinExchange
 				}
 		};
     private:
+        BitcoinExchange(const BitcoinExchange &other);
+        BitcoinExchange & operator = (const BitcoinExchange &other);
       
 };

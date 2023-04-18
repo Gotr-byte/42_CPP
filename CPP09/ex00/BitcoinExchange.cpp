@@ -1,15 +1,7 @@
 #include "BitcoinExchange.hpp"
 
     BitcoinExchange::BitcoinExchange(){}
-    BitcoinExchange::BitcoinExchange(const BitcoinExchange &other){
-        //TODO
-    }
-    BitcoinExchange & BitcoinExchange::operator = (const BitcoinExchange &other){
-        //TODO
-		return *this;
-    }
     BitcoinExchange::~BitcoinExchange(){}
-
 
 	void printMonth(int month)
 	{
@@ -39,7 +31,6 @@
 			std::cout << year;
 	}
 
-
 //expected output  2011-01-03 => 3 = 0.9
     int BitcoinExchange::priceCoinAmmount(std::map<int, double> &myMap, int target, double coinAmount) {
     std::map<int, double>::iterator it = myMap.upper_bound(target);
@@ -52,7 +43,7 @@
 		printDay(target % 100);
 		std::cout << " => " << coinAmount << " = " << it->second * coinAmount<< std::endl;
     } else {
-        std::cout << "No smaller or equal key found." << std::endl;
+        std::cerr << "Warning: No price entry found." << std::endl;
     }
     return 0;
 }
@@ -130,7 +121,6 @@ double BitcoinExchange::readValueCoin(std::string inputLine) {
 		throw(InvalidFormat());
 	if(!checkNumFloat(priceToCast))
 		throw(InvalidFormat());
-    //TODO should throw error if invalid input with reasons
     double priceToReturn = atof(priceToCast.c_str());
 	if (priceToReturn < 0)
 		throw(BitValueTooLow());

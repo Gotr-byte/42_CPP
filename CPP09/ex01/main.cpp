@@ -2,12 +2,16 @@
 #include <stack>
 #include <ctype.h>
 
+int ignoreWhitespaces(int i)
+{
+  
+}
+
 int main(int argc, char **argv) {
   std::stack<int> myStack;
   int first_operand;
   int second_operand;
   int i;
-  // int result;
   
   myStack.push(argv[1][0] - '0');
   i = 1;
