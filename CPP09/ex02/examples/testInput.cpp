@@ -11,18 +11,21 @@ int main(int argc, char** argv) {
     char* token = std::strtok(const_cast<char*>(inputString.c_str()), " ");
 
     // iterate over the tokens and store the integers in the vector
-    while (token != NULL) {
+    // while (token != NULL) {
+    while (token != NULL)
+    {
         int n = std::atoi(token);
-        // if (n < 0)
-
-        numbers.push_back(n);
+        std::cout << "token values: " << n << "\n";
+            // numbers.push_back(n);
         token = std::strtok(NULL, " ");
+        int n = std::atoi(token);
+        std::cout << "token values: " << n << "\n";
     }
-
+    // }
     // print the contents of the vector
-    for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it) {
-        std::cout << *it << " ";
-    }
+    // for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it) {
+        // std::cout << *it << " ";
+    // }
 
     return 0;
 }

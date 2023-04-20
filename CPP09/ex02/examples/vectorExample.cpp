@@ -75,6 +75,22 @@ void insertUnsortedToSorted(std::vector<int>& arr){
     insertionSortFrontToBack(arr, halfTmpSize, tmpSize);
 }
 
+int main(int argc, char** argv) {
+    // read the input string from the terminal
+    // std::getline(argv[1], inputString);
+
+    std::vector<int> numbers;
+
+    // iterate over the tokens and store the integers in the vector
+  
+    // print the contents of the vector
+    for (std::vector<int>::iterator it = numbers.begin(); it != numbers.end(); ++it) {
+        std::cout << *it << " ";
+    }
+
+    return 0;
+}
+
 int main(int argc, char **argv)
 {
     //TODO parsing of unsigned integer values
@@ -85,20 +101,19 @@ int main(int argc, char **argv)
     int isStrangler = 0;
     int i = 0;
     std::vector<int> myVector;
-  
+    std::string inputString = argv[1];
 
-    // Insert elements at the front of the list
-    while(argv[1][i])
-    {
-        myVector.push_back(argv[1][i] - '0');
-        i++;
+    char* token = std::strtok(const_cast<char*>(inputString.c_str()), " ");
+    while (token != NULL) {
+        int n = std::atoi(token);
+        myVector.push_back(n);
+        token = std::strtok(NULL, " ");
     }
     if (myVector.size() % 2)
     {
         strangler = myVector.back();
         isStrangler = 1;
         myVector.pop_back();
-        // std::cout << "got strangler: " << strangler << "\n";
     }
     std::cout << "before swap: ";
     printVector(myVector);
