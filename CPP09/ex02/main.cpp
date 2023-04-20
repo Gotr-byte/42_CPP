@@ -1,127 +1,58 @@
-// #include "PmMergeMe.hpp"
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <limits>
-
-void printVector(std::vector<int> myVector){
-  for (std::vector<int>::iterator it = myVector.begin(); it != myVector.end(); ++it) {
-        std::cout << *it << " ";
-    }
-}
-
-void insertionSortFrontToBack(std::vector<int>& arr, int halfPosition, int fullSize) {
-    int n = fullSize;
-    for (int i = halfPosition; i < n; i++) {
-            int key = arr[i];
-            int j = i - 1;
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 1] = arr[j];
-                j = j - 1;
-            }
-            arr[j + 1] = key;
-            std::cout << "\n";
-    }
-}
-
-void insertionStrangler(std::vector<int>& arr, int  strangler) {
-    arr.push_back(strangler);
-    insertionSortFrontToBack(arr, arr.size() - 1, arr.size());
-}
-
-void insertionSortPairs(std::vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 1; i < n; i++) {
-        if(i % 2 == 1)
-        {
-            int keyPair = arr[i - 1];
-            int key = arr[i];
-            int j = i - 2;
-            while (j >= 0 && arr[j] > key) {
-                arr[j + 2] = arr[j];
-                arr[j + 1] = arr[j - 1];
-                j = j - 2;
-            }
-            arr[j + 1] = keyPair;
-            arr[j + 2] = key;
-
-            std::cout << "\n";
-        }
-    }
-}
-
-void shuffleUnsortedPairsToBack(std::vector<int>& arr){
-    int i = 0;
-    int size = arr.size();
-    while (i < size)
-    {
-        if (i % 2 == 0)
-        {
-            arr.push_back(arr[i]);
-        }
-        i++;
-    }
-    i = 0;
-    while(i < size/2)
-    {
-        arr.erase(arr.begin() + i);
-        i++;
-    }
-}
-
-void insertUnsortedToSorted(std::vector<int>& arr){
-    int i = 0;
-    int tmpSize = arr.size();
-    int halfTmpSize = tmpSize / 2;
-
-    insertionSortFrontToBack(arr, halfTmpSize, tmpSize);
-}
+#include "PmergeMe.hpp"
+#include <ctime>
 
 int main(int argc, char **argv)
 {
-    //TODO put it all in a class
-    //TODO benchmarking using philosopher timestamps
+    //TODO make class templates
+    //TODO make deque template
     // Create an empty list of integers
-    //Have the classes perform the operations in one line in the code
-    unsigned int strangler;
-    int isStrangler = 0;
-    int i = 0;
-    std::vector<int> myVector;
-    std::string inputString = argv[1];
+    if(argc != 2){
+        std::cerr << "Invalid number of arguments\n";
+        return 1;
+    }
+    else{
+        PmergeMe numbersVector;
+        PmergeMeDequeue numbersDequeue;
 
-    char* token = std::strtok(const_cast<char*>(inputString.c_str()), " ");
-    while (token != NULL) {
-        int n = std::atoi(token);
-        if (n < 0 || n > std::numeric_limits<int>::max()){
-            std::cerr << "Error: please intput a number in the positvie integer range\n";
-            return (2);
-        }
-        myVector.push_back(n);
-        token = std::strtok(NULL, " ");
-    }
-    if (myVector.size() % 2)
-    {
-        strangler = myVector.back();
-        isStrangler = 1;
-        myVector.pop_back();
-    }
-    std::cout << "before swap: ";
-    for(int i = 0; i < myVector.size(); i++)
-    {
-        if (i % 2 == 0){}
-        else{
-            if (myVector[i] < myVector[i - 1])
-                std::swap(myVector[i], myVector[i - 1]);
-        }
-    }
-    insertionSortPairs(myVector);
-    shuffleUnsortedPairsToBack(myVector);
-    insertUnsortedToSorted(myVector);
-    if (isStrangler){
-        insertionStrangler(myVector, strangler);
-    }
-    std::cout << "\nafter swap: ";
-    printVector(myVector);
+        numbersVector.isStrangler = 0;
 
+        std::clock_t start = std::clock();
+        if(numbersVector.parseAppend(argv[1]))
+            return 1;
+        numbersVector.insertionSortPairs();
+        numbersVector.shuffleUnsortedPairsToBack();
+        numbersVector.insertUnsortedToSorted();
+        if (numbersVector.isStrangler){
+            numbersVector.insertionStrangler();
+        }
+        // get the elapsed time in microseconds
+        std::clock_t end = std::clock();
+        double elapsed_time = (end - start) / (double)CLOCKS_PER_SEC * 1000000;
+        std::cout << "After: ";
+        numbersVector.printVector();
+        std::cout << "\n";
+        // output the elapsed time
+
+        numbersDequeue.isStrangler = 0;
+
+        std::clock_t start2 = std::clock();
+        if(numbersDequeue.parseAppend(argv[1]))
+            return 1;
+        numbersDequeue.insertionSortPairs();
+        numbersDequeue.shuffleUnsortedPairsToBack();
+        numbersDequeue.insertUnsortedToSorted();
+        if (numbersDequeue.isStrangler){
+            numbersDequeue.insertionStrangler();
+        }
+        // get the elapsed time in microseconds
+        std::clock_t end2 = std::clock();
+        double elapsed_time2 = (end2 - start2) / (double)CLOCKS_PER_SEC * 1000000;
+        std::cout << "After: ";
+        numbersDequeue.printVector();
+        std::cout << "\n";
+        // output the elapsed time
+        std::cout << "Time to process a range of: " << numbersVector.numbers.size() << " elements with STD::Vector : " << elapsed_time << " microseconds" << std::endl;
+        std::cout << "Time to process a range of: " << numbersDequeue.numbers.size() << " elements with STD::Dequeue : " << elapsed_time2 << " microseconds" << std::endl;
+    }
     return 0;
 }

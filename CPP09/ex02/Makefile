@@ -1,7 +1,7 @@
-NAME := PmMergeMe
-SRCFILES := main.cpp
+NAME := PmergeMe
+SRCFILES := main.cpp PmergeMe.cpp
 CC = c++
-CFLAGS = -std=c++98 #-pedantic -Wextra -Werror -Wall
+CFLAGS = -std=c++98 -Wextra -Werror -Wall
 OBJS = $(SRCFILES:.cpp=.o)
 %o: %cpp
 	$(CC) $(CFLAGS) -c $(SRCFILES)
