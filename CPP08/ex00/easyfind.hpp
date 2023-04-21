@@ -1,24 +1,21 @@
 #pragma once
 #include <iostream>
-// #include <algorithm>
+#include <algorithm>
 #include <list>
 
 
 template<typename T>
 int easy_find(T intContainer, int integerToCompare){
-    // typename T::const_iterator      it;
-    // typename T::const_iterator      ite = intContainer.end();
-    
-    for_each(T.begin(), T.end(), integerToCompare);
+    typename T::iterator      it;
 
-    // for (it = intContainer.begin(); it != ite; ++it)
-    // {
-    //     if (*it == integerToCompare)
-    //     {
-    //         std::cout << "The integer value you are searching for equals: " << *it << "\n";
-    //         return 0;
-    //     }
-    // }
-    std::cerr << "integer not found" << "\n";
-    return(1);
+    it = find(intContainer.begin(), intContainer.end(), integerToCompare);
+    if(it == intContainer.end()){
+        std::cerr << "integer not found" << "\n";
+        return(1);
+    }
+    else
+    {
+        std::cout << "The integer value you are searching for equals: " << *it << "\n";
+        return 0;
+    }
 }
