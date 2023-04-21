@@ -1,5 +1,5 @@
 NAME := RPN
-SRCFILES := main.cpp
+SRCFILES := main.cpp RPN.cpp
 CC = c++
 CFLAGS = -std=c++98 #-pedantic -Wextra -Werror -Wall
 OBJS = $(SRCFILES:.cpp=.o)
